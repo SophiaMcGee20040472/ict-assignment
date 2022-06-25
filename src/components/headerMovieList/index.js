@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexWrap: "wrap",
     marginBottom: theme.spacing(1.5),
-   },
+  },
 }));
 
 const Header = (props ) => {
@@ -22,9 +22,11 @@ const Header = (props ) => {
   return (
     <Paper component="div" className={classes.root}>
       <IconButton
-        aria-label="go back">
+        aria-label="go back"
+      >
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
+
       <Typography variant="h4" component="h3">
         {title}
       </Typography>
