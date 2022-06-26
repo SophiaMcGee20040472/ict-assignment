@@ -37,12 +37,13 @@ const sample = {
   original_language: "en",
   original_title: "Star Wars: The Last Jedi",
   overview:
-    "Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.",
+    "When a virus threatens to turn the now earth-dwelling friendly alien hybrids against humans,Captain Rose Corley must lead a team of elite mercenaries on a mission to the alien world in order to save what's left of humanity",
   popularity: 44.208,
-  poster_path: "/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg",
+  poster_path: "/images/image1.jpg",
   production_companies: [
     {
       id: 1,
+      image: "/images/image1.jpg",
       logo_path: "/o86DbpburjxrqAzEDhXZcyE8pDb.png",
       name: "Lucasfilm",
       origin_country: "US",
@@ -55,6 +56,7 @@ const sample = {
     },
     {
       id: 2,
+      image: "/images/image1.jpg",
       logo_path: "/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
       name: "Walt Disney Pictures",
       origin_country: "US",
@@ -66,9 +68,9 @@ const sample = {
       name: "United States of America",
     },
   ],
-  release_date: "2017-12-13",
-  revenue: 1332459537,
-  runtime: 152,
+  release_date: "2020-10-25",
+  revenue: 0,
+  runtime: 113,
   spoken_languages: [
     {
       iso_639_1: "en",
@@ -76,19 +78,19 @@ const sample = {
     },
   ],
   status: "Released",
-  tagline: "Darkness rises... and light to meet it",
-  title: "Star Wars: The Last Jedi",
+  tagline: "To save our world she must invade theirs.",
+  title: "Skylines",
   video: false,
-  vote_average: 7,
-  vote_count: 9692,
+  vote_average: 5.7,
+  vote_count: 178,
 };
 
 const movies = [sample, sample, sample, sample, sample, sample, sample];
 const images = [
-  "/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg",
-  "/v1QQKq8M0fWxMgSdGOX1aCv8qMB.jpg",
-  "/2iGN0aKHJYD0xQydlfuCUAcgNbO.jpg",
-  "/rjBwhsOzHKUw2NIOrE7aMqjfe6s.jpg",
+  "/2W4ZvACURDyhiNnSIaFPHfNbny3.jpg",
+  "/ewMNLXgDyiyaBGdCzQqCF8hKWy2.jpg",
+  "/gsRYOoyIma62VvGs4mkG0Qlv2ws.jpg",
+  "/iEWQ6Lu4vStyCH4lFNnPzNk64BE.jpg",
 ]
 const App = () => {
   return (
