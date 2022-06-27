@@ -8,7 +8,6 @@ import StarRate from "@material-ui/icons/StarRate";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-
 const useStyles = makeStyles((theme) => ({
   chipRoot: {
     display: "flex",
@@ -34,8 +33,8 @@ const useStyles = makeStyles((theme) => ({
   },
   chipReview: {
     position: "absolute",
-    right:    20,
-    bottom:   20,
+    right: 20,
+    bottom: 20,
   },
 }));
 
@@ -97,7 +96,8 @@ const MovieDetails = (props) => {
         <Paper>
           <Chip
             icon={<ArrowDropUpIcon />}
-            label="REVIEWS" color= "secondary"
+            label="REVIEWS"
+            color="secondary"
             className={classes.chipReview}
           />
         </Paper>
