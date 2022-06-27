@@ -44,15 +44,16 @@ useEffect(()=> {
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
 },[]);
-const handlerChange = (e, type, value) => {
+const handleChange = (e, type, value) => {
   e.preventDefault()
-};
-
-const handlerTextChange = e => {
-  handlerChange(e, "genre", e.target.value)
+  props.onUserInput(type, value)   
 }
-const handlerGenreChange = e => {
- handlerChange(e, "genre", e.target.value)
+
+const handleTextChange = e => {
+  handleChange(e, "genre", e.target.value)
+}
+const handleGenreChange = e => {
+ handleChange(e, "genre", e.target.value)
 };
 
   return (
@@ -68,9 +69,9 @@ const handlerGenreChange = e => {
         id = "filled-search"
         label ="Search field"
         type = "search"
-        value = "{props.titleFilter}"
+        value = {props.titleFilter}
         variant= "filled"
-        onChange = {handlerTextChange}
+        onChange = {handleTextChange}
         />
         <FormControl className={classes.formControl}>
           <InputLabel id="genre-label">Genre</InputLabel>
@@ -78,7 +79,7 @@ const handlerGenreChange = e => {
       labelId="genre-label"
       id="genre-select"
       value={props.genreFilter}
-      onChange={handlerGenreChange}
+      onChange={handleGenreChange}
     >
             {genres.map((genre) => {
               return (
