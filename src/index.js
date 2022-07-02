@@ -3,9 +3,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
+import UpcomingMoviePage from "./pages/upcomingMovies";
 import MoviePage from "./pages/movieDetailsPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage";
-import SiteHeader from './components/siteHeader' 
+import SiteHeader from './components/siteHeader';
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
           <SiteHeader />      {/* New Header  */}
           <Routes>
       <Route path="/reviews/:id" element={<MovieReviewPage/>} />
+      <Route path="/movies/upcoming" element={<UpcomingMoviePage/>}/>
         <Route path="/movies/favourites" element={<FavouriteMoviesPage/>}
         />
         <Route path="/movies/:id" element={<MoviePage/>} />
