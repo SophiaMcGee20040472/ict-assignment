@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   appbar: {
+
   },
   inactiveLink: {
     color: 'white',
@@ -27,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
     color: 'black',
     padding : theme.spacing(1),
     fontSize: '1.5rem',
-    background: "#bfbfbf"
   }
 }));
 
@@ -58,7 +58,7 @@ const SiteHeader = () => {
   return ( 
     <>
       <AppBar className={classes.appbar}
-      position="fixed" elevation={0} color='primary'> 
+      position="fixed" elevation={0} color='secondary'> 
         <Toolbar>
           <Typography variant="h4" className={classes.title}>
             TMDB Client

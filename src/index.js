@@ -1,3 +1,5 @@
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools"
 import MovieReviewPage from "./pages/movieReviewPage";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -8,8 +10,19 @@ import MoviePage from "./pages/movieDetailsPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage";
 import SiteHeader from './components/siteHeader';
 
+const queryClient = new QueryClient({
+  defaultOptions:{
+    queries:{
+      staleTime:360000,
+      refetchInterval:360000,
+      refetchOnWindowFocus:false
+    },
+  },
+});
+
 const App = () => {
     return (
+      <QueryClientProvider client= {queryClient}>
       <BrowserRouter>
           <SiteHeader />      {/* New Header  */}
           <Routes>
@@ -22,6 +35,8 @@ const App = () => {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
+    <ReactQueryDevtools initialIsOpen = {false} />
+    </QueryClientProvider>
   );
 };
 

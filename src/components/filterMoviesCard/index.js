@@ -1,4 +1,4 @@
-import React, {useState, useEffect}  from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -10,6 +10,8 @@ import SearchIcon from "@material-ui/icons/Search";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { getGenres } from "../../api/tmdb-api";
+import { useQuery } from "react-query";
+import Spinner from "../spinner";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,67 +26,72 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+export default function FilterMoviesCard(props) {
+  const classes = useStyles();
+  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
 
+  if (isLoading) {
+    return <Spinner />;
+  }
 
-export default function FilterMoviesCard(props){
-    const classes = useStyles();
-    const [genres, setGenres] = useState([{ id: '0', name: "All"}])
-  
-    useEffect(() => {
-      getGenres().then((allGenres) => {
-        setGenres([genres[0], ...allGenres]);
-      });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-const handleChange = (e, type, value) => {
-  e.preventDefault()
-  props.onUserInput(type, value)   
-}
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+  const genres = data.genres;
+  if (genres[0].name !== "All"){
+    genres.unshift({ id: "0", name: "All" });
+  }
 
-const handleTextChange = e => {
-  handleChange(e, "genre", e.target.value)
-}
-const handleGenreChange = e => {
- handleChange(e, "genre", e.target.value)
-};
+  const handleChange = (e, type, value) => {
+    e.preventDefault();
+    props.onUserInput(type, value); // NEW
+  };
+
+  const handleTextChange = (e, props) => {
+    handleChange(e, "name", e.target.value);
+  };
+
+  const handleGenreChange = (e) => {
+    handleChange(e, "genre", e.target.value);
+  };
 
   return (
     <>
-    <Card className={classes.root} variant="outlined">
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the movies.
-        </Typography>
-        <TextField
-        className = {classes.formControl}
-        id = "filled-search"
-        label ="Search field"
-        type = "search"
-        value = {props.titleFilter}
-        variant= "filled"
-        onChange = {handleTextChange}
-        />
-        <FormControl className={classes.formControl}>
-          <InputLabel id="genre-label">Genre</InputLabel>
-          <Select
-      labelId="genre-label"
-      id="genre-select"
-      value={props.genreFilter}
-      onChange={handleGenreChange}
-    >
-            {genres.map((genre) => {
-              return (
-                <MenuItem key={genre.id} value={genre.id}>
-                  {genre.name}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
-      </CardContent>
-    </Card>
-    <Card className={classes.root} variant="outlined">
+      <Card className={classes.root} variant="outlined">
+        <CardContent>
+          <Typography variant="h5" component="h1">
+            <SearchIcon fontSize="large" />
+            Filter the movies.
+          </Typography>
+          <TextField
+            className={classes.formControl}
+            id="filled-search"
+            label="Search field"
+            type="search"
+            value={props.titleFilter}
+            variant="filled"
+            onChange={handleTextChange}
+          />
+          <FormControl className={classes.formControl}>
+            <InputLabel id="genre-label">Genre</InputLabel>
+            <Select
+              labelId="genre-label"
+              id="genre-select"
+              value={props.genreFilter}
+              onChange={handleGenreChange}
+            >
+              {genres.map((genre) => {
+                return (
+                  <MenuItem key={genre.id} value={genre.id}>
+                    {genre.name}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+        </CardContent>
+      </Card>
+      <Card className={classes.root} variant="outlined">
         <CardContent>
           <Typography variant="h5" component="h1">
             <SearchIcon fontSize="large" />
@@ -92,6 +99,6 @@ const handleGenreChange = e => {
           </Typography>
         </CardContent>
       </Card>
-      </>
+    </>
   );
 }
