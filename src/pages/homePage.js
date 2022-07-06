@@ -5,6 +5,7 @@ import Spinner from '../components/spinner'
 import {getMovies} from '../api/tmdb-api'
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 
+
 const HomePage = (props) => {
   const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
 
@@ -18,7 +19,7 @@ const HomePage = (props) => {
   const movies = data.results;
 
   // These three lines are redundant; we will replace them laterg.
-  const favourites = movies.filter(m => m.favouurite)
+  const favourites = movies.filter(m => m.favourite)
   localStorage.setItem('favourites', JSON.stringify(favourites))
   const addToFavourites = (movieId) => true 
 
@@ -27,6 +28,7 @@ const HomePage = (props) => {
       title="Discover Movies"
       movies={movies}
       action={(movie) => {
+        
         return <AddToFavouritesIcon movie={movie} />
       }}
     />
