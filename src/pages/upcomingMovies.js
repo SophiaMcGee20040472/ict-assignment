@@ -3,12 +3,12 @@ import PageTemplate from '../components/templateMovieListPage'
 import { getUpcomingMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner"
 import { useQuery } from "react-query";
-import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 import PlaylistAddIcon from  "@material-ui/icons/PlaylistAdd"
 
 const UpcomingMoviePage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('upComing', getUpcomingMovie)
-
+  const {  data, error, isLoading, isError }  = useQuery('movie', getUpcomingMovie)
+  
+  const addToFavourites = () => null;
   if (isLoading) {
     return <Spinner />
   }
@@ -18,21 +18,15 @@ const UpcomingMoviePage = (props) => {
   }  
   const movies = data.results;
   
-  
   return (
     <PageTemplate
-      title='Upcoming Movies'
-      movies={movies}
-      action={(movie) => {
-        
-        return  (
-        <> <handleAddToFavourites movie={movie} />
-         <PlaylistAddIcon movie ={movie} color ="primary"/>
-        </>      
-        );
-      }}
-
-    />
+    title='Upcoming Movies'
+    movies={movies}
+    action={(movie) => {
+      return <PlaylistAddIcon movie={movie} color ="primary" />
+    }}
+    selectFavourite={addToFavourites}
+  />
   );
 };
 export default UpcomingMoviePage;
