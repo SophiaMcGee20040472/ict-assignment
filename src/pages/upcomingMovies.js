@@ -1,12 +1,12 @@
 import React from "react";
 import PageTemplate from '../components/templateMovieListPage'
-import { getUpcomingMovie } from "../api/tmdb-api";
+import { getUpcomingMovies } from "../api/tmdb-api";
 import Spinner from "../components/spinner"
 import { useQuery } from "react-query";
-import PlaylistAddIcon from  "@material-ui/icons/PlaylistAdd"
+import PlaylistAddIcons from "../components/cardIcons/playlistAddIcon";
 
 const UpcomingMoviePage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('movie', getUpcomingMovie)
+  const {  data, error, isLoading, isError }  = useQuery('movie', getUpcomingMovies)
   
   const addToFavourites = () => null;
   if (isLoading) {
@@ -23,7 +23,7 @@ const UpcomingMoviePage = (props) => {
     title='Upcoming Movies'
     movies={movies}
     action={(movie) => {
-      return <PlaylistAddIcon movie={movie} color ="primary" />
+      return <PlaylistAddIcons movie={movie} color ="primary" />
     }}
     selectFavourite={addToFavourites}
   />
