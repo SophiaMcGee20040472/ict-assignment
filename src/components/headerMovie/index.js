@@ -14,9 +14,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexWrap: "wrap",
     padding: theme.spacing(1.5),
+    backgroundColor:'#7197d1'
   },
   tagLine: {
     fontSize: "1.5rem",
+    color:'white'
   },
 }));
 
@@ -25,21 +27,23 @@ const MovieHeader = (props) => {
   const movie = props.movie;
 
   return (
-    <Paper component="div" className={classes.root}>
+    <Paper component="div" className={classes.root} >
       <IconButton aria-label="go back">
-        <ArrowBackIcon color="primary" fontSize="large" />
+        <ArrowBackIcon style={{ color: 'white'}} fontSize="large" />
       </IconButton>
 
-      <Typography variant="h4" component="h3">
+      <Typography variant="h4" component="h3"style={{color: 'white'}}>
         {movie.title}
         <a href={movie.homepage}>
-          <HomeIcon color="primary" />
+          <span>
+          <HomeIcon style={{color: 'white'}} />
+          </span>
         </a>
         <br />
         <span className={classes.tagLine}>{`   "${movie.tagline}"`} </span>
       </Typography>
       <IconButton aria-label="go forward">
-        <ArrowForwardIcon color="primary" fontSize="large" />
+        <ArrowForwardIcon style={{color: 'white'}} fontSize="large" />
       </IconButton>
     </Paper>
   );

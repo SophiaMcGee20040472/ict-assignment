@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 220,
+    minWidth: 250,
     backgroundColor: "rgb(255, 255, 255)",
   },
 }));
@@ -57,9 +57,9 @@ export default function FilterMoviesCard(props) {
 
   return (
     <>
-      <Card className={classes.root} variant="outlined">
+      <Card className={classes.root} variant="outlined" style ={{background:'#7197d1'}}>
         <CardContent>
-          <Typography variant="h5" component="h1">
+          <Typography variant="h5" component="h1" style ={{color:'white'}}>
             <SearchIcon fontSize="large" />
             Filter the movies.
           </Typography>
@@ -90,11 +90,11 @@ export default function FilterMoviesCard(props) {
             </Select>
           </FormControl>
         </CardContent>
-      </Card>
+      </Card >
       <Card className={classes.root} variant="outlined">
-        <CardContent>
+        <CardContent style ={{background:'#95a7c0'}}>
           <Typography variant="h5" component="h1">
-            <SearchIcon fontSize="large" />
+            <SearchIcon fontSize="large"/>
             Sort the movies.
           </Typography>
         </CardContent>

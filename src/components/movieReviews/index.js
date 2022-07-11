@@ -32,19 +32,19 @@ export default function MovieReviews({ movie }) {
         <TableHead>
           <TableRow>
             <TableCell >Author</TableCell>
-            <TableCell align="center">Excerpt</TableCell>
-            <TableCell align="right">More</TableCell>
+            <TableCell style={{backgroundColor:'#7197d1',color:'white'}} align="center">Excerpt</TableCell>
+            <TableCell style={{backgroundColor:'orange'}} align="right">More</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {reviews.map((r) => (
-            <TableRow key={r.id}>
-              <TableCell component="th" scope="row">
+            <TableRow key={r.id}style={{backgroundColor:'#F5F5F5'}}>
+              <TableCell component="th" scope="row" style={{backgroundColor:'orange'}}>
                 {r.author}
               </TableCell>
               <TableCell >{excerpt(r.content)}</TableCell>
               <TableCell >
-                <Link
+                <Link style={{color:'orange'}}
                   to={`/reviews/${r.id}`}
                   state={{
                     review: r,

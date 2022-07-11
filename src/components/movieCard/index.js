@@ -11,16 +11,16 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import StarRateIcon from "@material-ui/icons/StarRate";
-import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import { MoviesContext } from "../../contexts/moviesContext";
+import PlaylistAddIcons from "../cardIcons/playlistAddIcon";
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
   media: { height: 500 },
   avatar: {
-    backgroundColor: "rgb(255, 0, 0)",
+    
   },
 });
 
@@ -39,23 +39,29 @@ export default function MovieCard({ movie, action }) {
     addToFavourites(movie);
   };
 
+  const handleAddToMustWatchList = (e) => {
+  e.preventDefault();
+  PlaylistAddIcons(movie.id);
+};
+
   return (
-    <Card className={classes.card}>
-      <CardHeader
-      className={classes.header}
+    <Card className={classes.card} style={{flex:1, backgroundColor:'#181818'}}>
+      <CardHeader 
+      className={classes.header}  
       avatar={
         movie.favourite ? (
-          <Avatar className={classes.avatar}>
+          <Avatar className={classes.avatar} style ={{color:'#E91E63', backgroundColor: 'white'}} >
             <FavoriteIcon />
-          </Avatar>
+          </Avatar >
         ) : null
       }
       title={
-        <Typography variant="h5" component="p">
+        <Typography variant="h5" component="p" style={{color:'white'}}>
           {movie.title}{" "}
         </Typography>
       }
     />
+    
       <CardMedia
         className={classes.media}
         image={
@@ -67,15 +73,15 @@ export default function MovieCard({ movie, action }) {
       <CardContent>
         <Grid container>
           <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
+            <Typography variant="h6" component="p" style={{color:'white'}}>
+              <CalendarIcon fontSize="small"/>
               {movie.release_date}
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <StarRateIcon fontSize="small" />
-              {"  "} {movie.vote_average}{" "}
+            <Typography variant="h6" component="p" style={{color:'white'}}>
+              <StarRateIcon fontSize="small" color ="secondary" />
+              {"  "} {movie.vote_average}{" "} 
             </Typography>
           </Grid>
         </Grid>
@@ -83,7 +89,7 @@ export default function MovieCard({ movie, action }) {
       <CardActions >
         {action(movie)}
         <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
+          <Button variant="outlined" style={{color:'white'}}size="medium" color="primary">
             More Info ...
           </Button>
         </Link>

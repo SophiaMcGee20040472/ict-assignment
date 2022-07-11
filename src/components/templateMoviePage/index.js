@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     width: 450,
     height: '100vh',
   },
+
 }));
 
 const TemplateMoviePage = ({ movie, children }) => {
@@ -40,13 +41,12 @@ const TemplateMoviePage = ({ movie, children }) => {
 
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root}  >
       <MovieHeader movie={movie} />
-
-      <Grid container spacing={5} style={{ padding: "15px" }}>
+      <Grid container spacing={5} style={{ padding: "15px" }} >
         <Grid item xs={3}>
           <div className={classes.imageListRoot}>
-            <ImageList rowHeight={500} className={classes.gridList} cols={1}>
+            <ImageList rowHeight={500} className={classes.gridList} cols={1} >
               {images.map((image) => (
                 <ImageListItem key={image.file_path} cols={1}>
                   <img
@@ -58,7 +58,6 @@ const TemplateMoviePage = ({ movie, children }) => {
             </ImageList>
           </div>
         </Grid>
-
         <Grid item xs={9}>
           {children}
         </Grid>

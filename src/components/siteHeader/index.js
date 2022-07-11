@@ -16,35 +16,36 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  appbar: {
-
-  },
+  appbar: {},
   inactiveLink: {
-    color: 'white',
-    padding : theme.spacing(1),
-    fontSize: '1.5rem'
+    color: "white",
+    padding: theme.spacing(1),
+    fontSize: "1rem",
+    fontFamily: "Franklin Gothic",
   },
   activeLink: {
-    color: 'black',
-    padding : theme.spacing(1),
-    fontSize: '1.5rem',
-  }
+    color: "#b0c6e8",
+    padding: theme.spacing(1),
+    fontSize: "1.1rem",
+    fontFamily: "Franklin Gothic",
+  },
 }));
 
 const SiteHeader = () => {
   const classes = useStyles();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const open = Boolean(anchorEl);
   const menuOptions = [
-    { label: "Home", path: "/" },
-    { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Favourites", path: "/movies/favourites" },
-    { label: "Option 3", path: "/" },
-    { label: "Option 4", path: "/" },
+    { label: "HOME", path: "/" },
+    { label: "UPCOMING", path: "/movies/upcoming" },
+    { label: "FAVOURITES", path: "/movies/favourites" },
+    { label: "TOP RATED MOVIES", path: "movies/top-rated" },
+    { label: "POPULAR MOVIES", path: "movies/popular" },
+    { label: "WATCHLIST", path: "movies/watchlist" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -55,15 +56,27 @@ const SiteHeader = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  return ( 
+  return (
     <>
-      <AppBar className={classes.appbar}
-      position="fixed" elevation={0} color='secondary'> 
+      <AppBar
+        className={classes.appbar}
+        position="fixed"
+        elevation={0}
+        style={{ flex: 1, backgroundColor: "#4871b0" }}
+      >
         <Toolbar>
-          <Typography variant="h4" className={classes.title}>
+          <Typography
+            variant="h4"
+            className={classes.title}
+            style={{ fontFamily: "Franklin Gothic" }}
+          >
             TMDB Client
           </Typography>
-          <Typography variant="h6" className={classes.title}>
+          <Typography
+            variant="h6"
+            className={classes.title}
+            style={{ fontFamily: "Franklin Gothic" }}
+          >
             All you ever wanted to know about Movies!
           </Typography>
           {isMobile ? (
@@ -109,13 +122,12 @@ const SiteHeader = () => {
                   key={opt.label}
                   to={opt.path}
                   className={({ isActive }) =>
-                  isActive ? classes.activeLink : classes.inactiveLink
-                }
+                    isActive ? classes.activeLink : classes.inactiveLink
+                  }
                   color="inherit"
-
                 >
                   {opt.label}
-                </NavLink> 
+                </NavLink>
               ))}
             </>
           )}

@@ -6,6 +6,7 @@ import {getMovies} from '../api/tmdb-api'
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 
 
+
 const HomePage = (props) => {
   const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
 

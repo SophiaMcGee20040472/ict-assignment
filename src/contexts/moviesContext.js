@@ -11,7 +11,7 @@ const MoviesContextProvider = (props) => {
   const addToFavourites = (movie) => {
     if (!favourites.includes(movie.id)) {
       let newFavourites = [...favourites, movie.id];
-      setFavourites(newFavourites);
+      setFavourites(newFavourites) ;
     }
   };
 

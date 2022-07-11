@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     listStyle: "none",
     padding: theme.spacing(1.5),
     margin: 0,
+    
   },
   chipSet: {
     display: "flex",
@@ -31,11 +32,13 @@ const useStyles = makeStyles((theme) => ({
     listStyle: "none",
     padding: theme.spacing(1.5),
     margin: 0,
+    
   },
   chipLabel: {
     margin: theme.spacing(0.5),
+    
   },
-  fab: {  //New
+  fab: {  
     position: "fixed",
     top: theme.spacing(15),
     right: theme.spacing(2),
@@ -55,10 +58,10 @@ const MovieDetails = ( {movie}) => {
       <Typography variant="h6" component="p">
         {movie.overview}
       </Typography>
-      <div className={classes.chipRoot}>
+      <div className={classes.chipRoot} >
       <Paper component="ul" className={classes.chipSet}>
         <li>
-          <Chip label="Genres" className={classes.chipLabel} color="primary" />
+          <Chip label="Genres" className={classes.chipLabel} color="secondary" />
         </li>
         {movie.genres.map((g) => (
           <li key={g.name}>
@@ -79,7 +82,7 @@ const MovieDetails = ( {movie}) => {
         <Chip label={`Released: ${movie.release_date}`} />
       </Paper>
       </div>
-      {/* New */}
+      {}
       <Fab    
         color="secondary"
         variant="extended"

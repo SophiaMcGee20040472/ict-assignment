@@ -3,21 +3,21 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { MoviesContext } from "../../contexts/moviesContext";
 
-const RemoveFromFavouritesIcon = ({ movie }) => {
+const RemoveFromMustWatchIcon = ({ movie }) => {
   const context = useContext(MoviesContext);
 
-  const handleRemoveFromFavourites = (e) => {
+  const handleRemoveFromMustWatch = (e) => {
     e.preventDefault();
-    context.removeFromFavourites(movie);
+    context.removeFromMustWatch(movie);
   };
   return (
     <IconButton
-      aria-label="remove from favorites"
-      onClick={handleRemoveFromFavourites}
+      aria-label="remove from Must Watchlist"
+      onClick={handleRemoveFromMustWatch}
     >
       <DeleteIcon style={{backgroundColor:'#E91E63', color: 'white'}} fontSize="large" />
     </IconButton>
   );
 };
 
-export default RemoveFromFavouritesIcon;
+export default RemoveFromMustWatchIcon;

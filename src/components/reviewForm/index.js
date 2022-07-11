@@ -40,11 +40,13 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+
   },
   form: {
     width: "100%",
     "& > * ": {
-      marginTop: theme.spacing(2),
+      marginTop: theme.spacing(1.2),
+      backgroundColor:'white'
     },
   },
   textField: {
@@ -88,7 +90,7 @@ const ReviewForm = ({ movie }) => {
 
   return (
     <Box component="div" className={classes.root}>
-      <Typography component="h2" variant="h3">
+      <Typography style={{color:'#7197d1'}}component="h2" variant="h3">
         Write a review
       </Typography>
       <Snackbar
@@ -145,7 +147,7 @@ const ReviewForm = ({ movie }) => {
           })}
         />
         {errors.content && (
-          <Typography variant="h6" component="p">
+          <Typography variant="h6" component="p" >
             {errors.content.message}
           </Typography>
         )}
@@ -157,6 +159,7 @@ const ReviewForm = ({ movie }) => {
           value={rating}
           onChange={handleRatingChange}
           helperText="Don't forget your rating"
+          
         >
           {ratings.map((option) => (
             <MenuItem key={option.value} value={option.value}>

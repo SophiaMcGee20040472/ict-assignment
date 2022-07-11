@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     '& > * + *': {
       marginLeft: theme.spacing(2),
+      color : "black"
     },
   },
 }));
