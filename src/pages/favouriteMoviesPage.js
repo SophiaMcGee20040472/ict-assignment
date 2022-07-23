@@ -32,7 +32,7 @@ const movies = favouriteMovieQueries.map((q) => {
 
 return (
   <PageTemplate
-    title="Favourite Movies"
+    title="MY FAVOURITES"
     movies={movies}
     action={(movie) => {
       return (

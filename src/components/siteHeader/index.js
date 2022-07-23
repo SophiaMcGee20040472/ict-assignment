@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,6 +11,8 @@ import Menu from "@material-ui/core/Menu";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { Button, Select } from "@material-ui/core";
+import Nav from "../nav/nav";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -20,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
   inactiveLink: {
     color: "white",
     padding: theme.spacing(1),
-    fontSize: "1rem",
+    fontSize: "0.8rem",
     fontFamily: "Franklin Gothic",
   },
   activeLink: {
     color: "#b0c6e8",
     padding: theme.spacing(1),
-    fontSize: "1.1rem",
+    fontSize: "0.8rem",
     fontFamily: "Franklin Gothic",
   },
 }));
@@ -40,12 +42,15 @@ const SiteHeader = () => {
 
   const open = Boolean(anchorEl);
   const menuOptions = [
-    { label: "HOME", path: "/" },
-    { label: "UPCOMING", path: "/movies/upcoming" },
-    { label: "FAVOURITES", path: "/movies/favourites" },
-    { label: "TOP RATED MOVIES", path: "movies/top-rated" },
-    { label: "POPULAR MOVIES", path: "movies/popular" },
-    { label: "WATCHLIST", path: "movies/watchlist" },
+    { name: "TOP RATED MOVIES", path: "movies/top-rated" },
+    { name: "POPULAR MOVIES", path: "movies/popular" },
+    { name: "MY WATCHLIST", path: "movies/watchlist" },
+    { name: "NOW-PLAYING", path: "movies/now-playing" },
+  ];
+  const menuOptions2 = [
+    { name: "HOME", path: "/" },
+    { name: "UPCOMING", path: "/movies/upcoming" },
+    { name: "FAVOURITES", path: "/movies/favourites" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -62,23 +67,49 @@ const SiteHeader = () => {
         className={classes.appbar}
         position="fixed"
         elevation={0}
-        style={{ flex: 1, backgroundColor: "#4871b0" }}
+        style={{ flex: 1, backgroundColor: "#581845" ,color:"#DAF7A6" }}
       >
         <Toolbar>
-          <Typography
+        <Typography
             variant="h4"
             className={classes.title}
-            style={{ fontFamily: "Franklin Gothic" }}
+            align="left"
+            style={{ fontFamily: "Franklin Gothic",flex: 1, color: "#FFC300" }}
+           
           >
-            TMDB Client
+            ASSIGNMENT22
+
           </Typography>
+          {menuOptions2.map((opt) => (
+            <MenuItem key={opt.name} onClick={() => handleMenuSelect(opt.path)}>
+              {opt.name}
+            </MenuItem>
+          ))}
+          <Typography> MORE..</Typography>
+          <img
+            src="https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg"
+            width="10"
+            height={1}
+            alt=""
+          ></img>
+          <Select style={{ backgroundColor: "#581845" }}>
+            <Nav></Nav>
+          </Select>
+          <img
+            src="https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg"
+            width="10"
+            height={1}
+            alt=""
+          ></img>
           <Typography
-            variant="h6"
+            variant="h5"
             className={classes.title}
+            align="left"
             style={{ fontFamily: "Franklin Gothic" }}
           >
-            All you ever wanted to know about Movies!
+            All you need to know about Movies!
           </Typography>
+
           {isMobile ? (
             <>
               <IconButton
@@ -107,29 +138,16 @@ const SiteHeader = () => {
               >
                 {menuOptions.map((opt) => (
                   <MenuItem
-                    key={opt.label}
+                    key={opt.name}
                     onClick={() => handleMenuSelect(opt.path)}
                   >
-                    {opt.label}
+                    {opt.name}
                   </MenuItem>
                 ))}
               </Menu>
             </>
           ) : (
-            <>
-              {menuOptions.map((opt) => (
-                <NavLink
-                  key={opt.label}
-                  to={opt.path}
-                  className={({ isActive }) =>
-                    isActive ? classes.activeLink : classes.inactiveLink
-                  }
-                  color="inherit"
-                >
-                  {opt.label}
-                </NavLink>
-              ))}
-            </>
+            <></>
           )}
         </Toolbar>
       </AppBar>

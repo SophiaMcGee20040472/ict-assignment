@@ -21,7 +21,7 @@ const PopularMoviePage = (props) => {
   
   return (
     <PageTemplate
-    title='Popular Movies'
+    title='POPULAR MOVIES'
     movies={movies}
     action={(movie) => {
       return <div>

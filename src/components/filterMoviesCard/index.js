@@ -57,7 +57,7 @@ export default function FilterMoviesCard(props) {
 
   return (
     <>
-      <Card className={classes.root} variant="outlined" style ={{background:'#7197d1'}}>
+      <Card className={classes.root} variant="outlined" style ={{background:'#581845'}}>
         <CardContent>
           <Typography variant="h5" component="h1" style ={{color:'white'}}>
             <SearchIcon fontSize="large" />
@@ -92,7 +92,7 @@ export default function FilterMoviesCard(props) {
         </CardContent>
       </Card >
       <Card className={classes.root} variant="outlined">
-        <CardContent style ={{background:'#95a7c0'}}>
+        <CardContent style ={{background:'#900C3F'}}>
           <Typography variant="h5" component="h1">
             <SearchIcon fontSize="large"/>
             Sort the movies.

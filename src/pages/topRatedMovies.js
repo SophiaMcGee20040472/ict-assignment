@@ -21,7 +21,7 @@ const TopRatedPage = (props) => {
   
   return (
     <PageTemplate
-    title='Top Rated Movies'
+    title='TOP-RATED MOVIES'
     movies={movies}
     action={(movie) => {
       return <div>

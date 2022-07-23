@@ -15,6 +15,7 @@ import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import { MoviesContext } from "../../contexts/moviesContext";
 import PlaylistAddIcons from "../cardIcons/playlistAddIcon";
+import { useState } from "react";
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -22,11 +23,13 @@ const useStyles = makeStyles({
   avatar: {
     
   },
+  avatar1: {}
+
 });
 
 export default function MovieCard({ movie, action }) {
   const classes = useStyles();
-  const { favourites, addToFavourites } = useContext(MoviesContext);
+  const { favourites, addToFavourites, mustWatch } = useContext(MoviesContext);
 
   if (favourites.find((id) => id === movie.id)) {
     movie.favourite = true;
@@ -38,6 +41,12 @@ export default function MovieCard({ movie, action }) {
     e.preventDefault();
     addToFavourites(movie);
   };
+  
+  if (mustWatch.find((id) => id === movie.id)) {
+    movie.mustWatch = true;
+  } else {
+    movie.mustWatch = false
+  }
 
   const handleAddToMustWatchList = (e) => {
   e.preventDefault();
@@ -47,16 +56,30 @@ export default function MovieCard({ movie, action }) {
   return (
     <Card className={classes.card} style={{flex:1, backgroundColor:'#181818'}}>
       <CardHeader 
-      className={classes.header}  
+      className={classes.header} 
       avatar={
         movie.favourite ? (
-          <Avatar className={classes.avatar} style ={{color:'#E91E63', backgroundColor: 'white'}} >
+          <Avatar className={classes.avatar} style ={{color:'white', backgroundColor: '#FF5733'}} >
             <FavoriteIcon />
           </Avatar >
         ) : null
       }
+      avatar1={
+        movie.mustWatch ? (
+          <Avatar className={classes.avatar1} style ={{color:'#E91E63', backgroundColor: 'white'}} >
+            <PlaylistAddIcons />
+          </Avatar >
+        ) : null
+      }
+/*       avatar1={
+        movie.mustWatch ? (
+          <Avatar className={classes.avatar} style ={{color:'#E91E63', backgroundColor: 'white'}} >
+            <PlaylistAddIcons onClick ={handleAddToMustWatchList}/>
+          </Avatar >
+        ) : null
+      } */
       title={
-        <Typography variant="h5" component="p" style={{color:'white'}}>
+        <Typography variant="h5" component="p" style={{color:'#DAF7A6',textAlign:"center"}}>
           {movie.title}{" "}
         </Typography>
       }
@@ -74,13 +97,13 @@ export default function MovieCard({ movie, action }) {
         <Grid container>
           <Grid item xs={6}>
             <Typography variant="h6" component="p" style={{color:'white'}}>
-              <CalendarIcon fontSize="small"/>
+              <CalendarIcon fontSize="small"/><br></br>
               {movie.release_date}
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="h6" component="p" style={{color:'white'}}>
-              <StarRateIcon fontSize="small" color ="secondary" />
+            <Typography variant="h6" component="p" style={{color:'white',textAlign:"right"}}>
+              <StarRateIcon fontSize="small" style={{color:'#FFC300',textAlign:"right"}} />
               {"  "} {movie.vote_average}{" "} 
             </Typography>
           </Grid>
@@ -89,7 +112,7 @@ export default function MovieCard({ movie, action }) {
       <CardActions >
         {action(movie)}
         <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" style={{color:'white'}}size="medium" color="primary">
+          <Button variant="outlined" style={{color:'white',background:'dark-grey',outline:'#FFC300'}}size="medium">
             More Info ...
           </Button>
         </Link>

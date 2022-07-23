@@ -11,8 +11,8 @@ const PlaylistAddIcons = ({movie}) => {
         context.addToMustWatchList(movie);
     }
     return (
-        <IconButton style={{backgroundColor:'#7197d1', color: 'black'}} aria-label="add to must watch list" onClick={handleAddToMustWatchList}>
-            <PlaylistAddIcon />
+        <IconButton style={{backgroundColor:'#900C3F', color: '#FF5733'}} aria-label="add to must watch list" onClick={handleAddToMustWatchList}>
+            <PlaylistAddIcon  />
         </IconButton>
     )
 };
