@@ -13,6 +13,7 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Button, Select } from "@material-ui/core";
 import Nav from "../nav/nav";
+import SearchBox from "../SearchBox";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -46,11 +47,13 @@ const SiteHeader = () => {
     { name: "POPULAR MOVIES", path: "movies/popular" },
     { name: "MY WATCHLIST", path: "movies/watchlist" },
     { name: "NOW-PLAYING", path: "movies/now-playing" },
+    { name: "UPCOMING", path: "/movies/upcoming" },
+    { name: "FAVOURITES", path: "/movies/favourites" },
   ];
   const menuOptions2 = [
     { name: "HOME", path: "/" },
-    { name: "UPCOMING", path: "/movies/upcoming" },
-    { name: "FAVOURITES", path: "/movies/favourites" },
+    { name: "ACTORS LIST", path: "/actors" },
+    { name: "TV SERIES", path: "/tv/series" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -71,7 +74,7 @@ const SiteHeader = () => {
       >
         <Toolbar>
         <Typography
-            variant="h4"
+            variant="h5"
             className={classes.title}
             align="left"
             style={{ fontFamily: "Franklin Gothic",flex: 1, color: "#FFC300" }}
@@ -81,7 +84,7 @@ const SiteHeader = () => {
 
           </Typography>
           {menuOptions2.map((opt) => (
-            <MenuItem key={opt.name} onClick={() => handleMenuSelect(opt.path)}>
+            <MenuItem variant="h6" key={opt.name} onClick={() => handleMenuSelect(opt.path)}>
               {opt.name}
             </MenuItem>
           ))}
@@ -102,7 +105,7 @@ const SiteHeader = () => {
             alt=""
           ></img>
           <Typography
-            variant="h5"
+            variant="h6"
             className={classes.title}
             align="left"
             style={{ fontFamily: "Franklin Gothic" }}

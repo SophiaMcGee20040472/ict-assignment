@@ -9,7 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { getGenres } from "../../api/tmdb-api";
+import { getActorsMovies } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../spinner";
 
@@ -26,9 +26,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FilterMoviesCard(props) {
+export default function FilterActorsMoviesCard(props) {
   const classes = useStyles();
-  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  const { data, error, isLoading, isError } = useQuery("cast", getActorsMovies);
 
   if (isLoading) {
     return <Spinner />;
@@ -37,9 +37,9 @@ export default function FilterMoviesCard(props) {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  const genres = data.genres;
-  if (genres[0].name !== "All"){
-    genres.unshift({ id: "0", name: "All" });
+  const casts = data.cast;
+  if (casts[0].name !== "All"){
+    casts.unshift({ id: "0", name: "All" });
   }
 
   const handleChange = (e, type, value) => {
@@ -51,8 +51,8 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "name", e.target.value);
   };
 
-  const handleGenreChange = (e) => {
-    handleChange(e, "genre", e.target.value);
+  const handleCastChange = (e) => {
+    handleChange(e, "cast", e.target.value);
   };
 
   return (
@@ -73,28 +73,22 @@ export default function FilterMoviesCard(props) {
             onChange={handleTextChange}
           />
           <FormControl className={classes.formControl}>
-            <InputLabel id="genre-label">Genre</InputLabel>
+            <InputLabel id="cast-label">Cast</InputLabel>
             <Select
-              labelId="genre-label"
-              id="genre-select"
-              value={props.genreFilter}
-              onChange={handleGenreChange}
+              labelId="cast-label"
+              id="cast-select"
+              value={props.castFilter}
+              onChange={handleCastChange}
             >
-              {genres.map((genre) => {
+              {casts.map((cast) => {
                 return (
-                  <MenuItem key={genre.id} value={genre.id}>
-                    {genre.name}
+                  <MenuItem key={cast.id} value={cast.id}>
+                    {cast.name}
                   </MenuItem>
                 );
               })}
             </Select>
-
-
           </FormControl>
-
-
-
-
         </CardContent>
       </Card >
       <Card className={classes.root} variant="outlined">

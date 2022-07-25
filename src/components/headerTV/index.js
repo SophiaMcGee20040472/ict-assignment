@@ -22,9 +22,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MovieHeader = (props) => {
+const TvHeader = (props) => {
   const classes = useStyles();
-  const movie = props.movie;
+  const tv = props.tv;
 
 
   return (
@@ -33,14 +33,14 @@ const MovieHeader = (props) => {
         <ArrowBackIcon style={{ color: "white" }} fontSize="large" />
       </IconButton>
       <Typography variant="h4" component="h3" style={{ color: "white" }}>
-        {movie.title}
-        <a href={movie.homepage}>
+        {tv.title}
+        <a href={tv.homepage}>
           <span>
             <HomeIcon style={{ color: "white" }} />
           </span>
         </a>
         <br />
-        <span className={classes.tagLine}>{`   "${movie.tagline}"`} </span>
+        <span className={classes.tagLine}>{`   "${tv.tagline}"`} </span>
       </Typography>
       <IconButton aria-label="go forward">
         <ArrowForwardIcon style={{ color: "white" }} fontSize="large" />
@@ -49,4 +49,4 @@ const MovieHeader = (props) => {
   );
 };
 
-export default MovieHeader;
+export default TvHeader;

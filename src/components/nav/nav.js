@@ -8,10 +8,13 @@ function Nav() {
 
   useEffect(() => {
     const navs = [
+        { name: "UPCOMING", path: "/movies/upcoming" },
+        { name: "FAVOURITES", path: "/movies/favourites" },
         { name: "MY WATCHLIST", path: "movies/watchlist" },
         { name: "NOW - PLAYING", path: "movies/now-playing" },
         { name: "POPULAR MOVIES", path: "movies/popular" },
         { name: "TOP RATED MOVIES", path: "movies/top-rated" },
+      
     ];
     setNavLinks(navs);
   }, []);
