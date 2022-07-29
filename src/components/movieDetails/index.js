@@ -65,7 +65,7 @@ const MovieDetails = ( {movie}) => {
         </li>
         {movie.genres.map((g) => (
           <li key={g.name}>
-            <Chip label={g.name} className={classes.chip} />
+            <Chip label={g.name} className={classes.chip} style={{background:"pink"}} />
           </li>
         ))}
       </Paper>

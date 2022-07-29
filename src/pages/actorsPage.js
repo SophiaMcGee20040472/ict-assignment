@@ -21,7 +21,7 @@ const ActorPage = (props) => {
 
   return (
     <ActorPageTemplate
-      title="Discover Actors"
+      title="ACTORS LIST"
       actor={actors}
       action={(actor) => {
         return <AddToFavouritesIcon actor={actor} />

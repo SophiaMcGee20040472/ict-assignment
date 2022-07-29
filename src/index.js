@@ -18,6 +18,9 @@ import NowPlayingPage from "./pages/nowPlayingPage";
 import TvSeries from "./pages/tvSeries";
 import TvDetailsPage from './pages/tvDetailsPage'
 import ActorPage from "./pages/actorsPage";
+import SimilarMoviePage from "./pages/similarMoviesPage";
+import ActorMovieDetails from "./pages/actorsMoviesPage";
+import ActorBiographyPage from "./pages/actorsBioPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,9 +49,11 @@ const App = () => {
             <Route path="/movies/favourites" element={<FavouriteMoviesPage />}/>
             <Route path="/movies/now-playing" element={<NowPlayingPage />} />
             <Route path="/actors" element={<ActorPage/>} />
+            <Route path="/actor/:id" element={<ActorBiographyPage/>} />
             <Route path="/movies/:id" element={<MoviePage />} />
-            <Route path="/tv/tv_id" element={<TvDetailsPage />} />
-
+            <Route path="/tvseries/:id" element={<TvDetailsPage />} />
+            <Route path="movies/similar" element={<SimilarMoviePage/>} />
+            <Route path="people/actorsmovies" element ={<ActorMovieDetails/>} />
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />       
           </Routes>

@@ -51,8 +51,8 @@ export default function TVCard({ tv, action }) {
       </CardContent>
       <CardActions >
         {action(tv)}
-        <Link to={`/tv/${tv.id}`}>
-          <Button variant="outlined" style={{color:'white',background:'dark-grey',outline:'#FFC300'}}size="medium">
+        <Link to={`/tvseries/${tv.id}`}>
+        <Button variant="outlined" size="medium" style ={{background:"#900C3F ", color:"#DAF7A6" }}>
             More Info ...
           </Button>
         </Link>

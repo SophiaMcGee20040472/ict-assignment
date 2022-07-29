@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
-import Drawer from "@material-ui/core/Drawer";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TvDetailsPage = ( {tv}) => {
+const TvDetails = ( {tv}) => {
   const classes = useStyles();
   const [drawerOpen, setDrawerOpen] = useState(false); // New
 
@@ -65,7 +65,7 @@ const TvDetailsPage = ( {tv}) => {
         </li>
         {tv.genres.map((g) => (
           <li key={g.name}>
-            <Chip label={g.name} className={classes.chip} />
+            <Chip label={g.name} className={classes.chip} style={{background:"pink"}} />
           </li>
         ))}
       </Paper>
@@ -92,10 +92,8 @@ const TvDetailsPage = ( {tv}) => {
         <NavigationIcon />
         Reviews
       </Fab>
-      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        
-      </Drawer>
+
     </>
   );
 };
-export default  TvDetailsPage;
+export default  TvDetails;

@@ -1,13 +1,12 @@
 import React from "react";
 import PageTemplate from '../components/templateMovieListPage'
-import { getUpcomingMovies } from "../api/tmdb-api";
+import { getSimilarMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner"
 import { useQuery } from "react-query";
 import PlaylistAddIcons from "../components/cardIcons/playlistAddIcon";
-import SimilarMoviePage from "./similarMoviesPage";
 
-const UpcomingMoviePage = () => {
-  const { data, error, isLoading, isError }  = useQuery('movie', getUpcomingMovies)
+const SimilarMoviePage = () => {
+  const { data, error, isLoading, isError }  = useQuery('movie', getSimilarMovie)
   
   if (isLoading) {
     return <Spinner />
@@ -21,14 +20,12 @@ const UpcomingMoviePage = () => {
 
   return (
     <PageTemplate
-    title='UPCOMING MOVIES'
+    title='SIMILAR MOVIES'
     movies={movies}
     action={(movie) => {
       return <PlaylistAddIcons movie={movie}  />
-      
     }}
   />
   );
 };
-export default UpcomingMoviePage;
-
+export default SimilarMoviePage;

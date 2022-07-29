@@ -67,10 +67,3 @@ function TVListPageTemplate({ tvseries, title, action }) {
   );
 }
 export default TVListPageTemplate;
-
-
-
-
-
-
-

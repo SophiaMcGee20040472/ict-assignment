@@ -37,6 +37,13 @@ export default function MovieCard({ movie, action }) {
     movie.favourite = false
   }
 
+  let link = ""
+  if(movie.type === "MOVIE") {
+    link = "movies"
+  } else if (movie.type === "TVSERIES"){
+    link = "tv"
+  } 
+
   const handleAddToFavourite = (e) => {
     e.preventDefault();
     addToFavourites(movie);
@@ -71,13 +78,7 @@ export default function MovieCard({ movie, action }) {
           </Avatar >
         ) : null
       }
-/*       avatar1={
-        movie.mustWatch ? (
-          <Avatar className={classes.avatar} style ={{color:'#E91E63', backgroundColor: 'white'}} >
-            <PlaylistAddIcons onClick ={handleAddToMustWatchList}/>
-          </Avatar >
-        ) : null
-      } */
+
       title={
         <Typography variant="h5" component="p" style={{color:'#DAF7A6',textAlign:"center"}}>
           {movie.title}{" "}
@@ -112,7 +113,7 @@ export default function MovieCard({ movie, action }) {
       <CardActions >
         {action(movie)}
         <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" style={{color:'white',background:'dark-grey',outline:'#FFC300'}}size="medium">
+        <Button variant="outlined" size="medium" style ={{background:"#900C3F ", color:"#DAF7A6" }}>
             More Info ...
           </Button>
         </Link>

@@ -47,14 +47,18 @@ const SiteHeader = () => {
     { name: "POPULAR MOVIES", path: "movies/popular" },
     { name: "MY WATCHLIST", path: "movies/watchlist" },
     { name: "NOW-PLAYING", path: "movies/now-playing" },
+    { name: "SIMILAR MOVIES", path: "movies/similar" },
     { name: "UPCOMING", path: "/movies/upcoming" },
-    { name: "FAVOURITES", path: "/movies/favourites" },
+    { name: "TV DETAILS", path: "/tv/tv_id" },
   ];
   const menuOptions2 = [
     { name: "HOME", path: "/" },
     { name: "ACTORS LIST", path: "/actors" },
     { name: "TV SERIES", path: "/tv/series" },
+    { name: "FAVOURITES", path: "/movies/favourites" },
+    { name: "TOP RATED", path: "movies/top-rated" },
   ];
+
 
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL);

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexWrap: "wrap",
     padding: theme.spacing(1.5),
-    backgroundColor: "#7197d1",
+    backgroundColor: "#900C3F",
   },
   tagLine: {
     fontSize: "1.5rem",

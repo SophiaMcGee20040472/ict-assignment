@@ -15,6 +15,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexWrap: "wrap",
     marginBottom: theme.spacing(2.6),
+    marginRight: theme.spacing(-2.4),
+    marginLeft: theme.spacing(-2.4),
     backgroundColor:'#900C3F'
   },
 }));
