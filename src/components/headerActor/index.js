@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
+import { useNavigate } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,21 +28,22 @@ const useStyles = makeStyles((theme) => ({
 const ActorHeader = (props) => {
   const classes = useStyles();
   const actor = props.actor;
+  const nav = useNavigate();
 
 
   return (
     <Paper component="div" className={classes.root} >
-      <IconButton aria-label="go back">
-        <ArrowBackIcon style={{ color: "white" }} fontSize="large" />
+      <IconButton aria-label="go back" onClick={() => nav(-1)}>
+        <ArrowBackIcon style={{ color: "#DAF7A6" }} fontSize="large" />
       </IconButton>
-      <Typography variant="h4" component="h3" style={{ color: "white" }}>
+      <Typography variant="h4" component="h3" style={{ color: "#DAF7A6" }}>
        Biography for the Actor {actor.name} 
         <br />
         
-        <span className={classes.tagLine} >{`   "${actor.place_of_birth}"`}</span>
+        <span className={classes.tagLine} style={{ color: "#DAF7A6" }}>{`   "${actor.place_of_birth}"`}</span>
       </Typography>
-      <IconButton aria-label="go forward">
-        <ArrowForwardIcon style={{ color: "white" }} fontSize="large" />
+      <IconButton aria-label="go forward" onClick={() => nav(1)}>
+        <ArrowForwardIcon style={{ color: "#DAF7A6" }} fontSize="large" />
       </IconButton>
     </Paper>
   );

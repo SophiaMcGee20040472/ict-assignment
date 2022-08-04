@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import TvDetails from "../components/tvDetails";
 import TemplateTvPage from "../components/templateTvDetails";
-import { getTVSeries } from '../api/tmdb-api';
+import { getTVSeriesDetails } from '../api/tmdb-api';
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner';
 
@@ -11,7 +11,7 @@ const TVDetailsPage = () => {
   const { id } = useParams();
   const { data: tvSeries, error, isLoading, isError } = useQuery(
     ["tv", { id: id }],
-    getTVSeries
+    getTVSeriesDetails
   );
 
   if (isLoading) {

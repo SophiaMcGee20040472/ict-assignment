@@ -91,10 +91,6 @@ export default function FilterMoviesCard(props) {
 
 
           </FormControl>
-
-
-
-
         </CardContent>
       </Card >
       <Card className={classes.root} variant="outlined">

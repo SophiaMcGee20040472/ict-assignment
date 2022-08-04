@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import HomeIcon from "@material-ui/icons/Home";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1.5),
     marginRight: theme.spacing(-2.4),
     marginLeft: theme.spacing(-2.4),
-    backgroundColor: "#7197d1",
+    backgroundColor: "#900C3F",
   },
   tagLine: {
     fontSize: "1.5rem",
@@ -26,26 +26,21 @@ const useStyles = makeStyles((theme) => ({
 
 const TvHeader = (props) => {
   const classes = useStyles();
-  const tv = props.tv;
-
+  const tvSeries = props.tvSeries;
+  const nav = useNavigate();
 
   return (
     <Paper component="div" className={classes.root}>
-      <IconButton aria-label="go back">
-        <ArrowBackIcon style={{ color: "white" }} fontSize="large" />
+      <IconButton aria-label="go back" onClick={() => nav(-1)}>
+        <ArrowBackIcon style={{ color: "#DAF7A6" }} fontSize="large" />
       </IconButton>
-      <Typography variant="h4" component="h3" style={{ color: "white" }}>
-        {tv.title}
-        <a href={tv.homepage}>
-          <span>
-            <HomeIcon style={{ color: "white" }} />
-          </span>
-        </a>
+      <Typography variant="h4" component="h3" style={{ color: "#DAF7A6" }}>
+        {tvSeries.name}
         <br />
-        <span className={classes.tagLine}>{`   "${tv.tagline}"`} </span>
+        <span className={classes.tagLine} style={{ color: "#DAF7A6" }}>{`   "${tvSeries.tagline}"`} </span>
       </Typography>
-      <IconButton aria-label="go forward">
-        <ArrowForwardIcon style={{ color: "white" }} fontSize="large" />
+      <IconButton aria-label="go forward" onClick={() => nav(1)}>
+        <ArrowForwardIcon style={{ color: "#DAF7A6" }} fontSize="large" />
       </IconButton>
     </Paper>
   );
