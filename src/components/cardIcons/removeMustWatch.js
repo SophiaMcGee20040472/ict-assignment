@@ -15,7 +15,7 @@ const RemoveFromMustWatchIcon = ({ movie }) => {
       aria-label="remove from Must Watchlist"
       onClick={handleRemoveFromMustWatch}
     >
-      <DeleteIcon style={{backgroundColor:'black', color: 'red'}} fontSize="large" />
+      <DeleteIcon style={{backgroundColor:'#DAF7A6', color: '#FF5733'}} fontSize="large" />
     </IconButton>
   );
 };

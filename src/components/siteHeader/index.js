@@ -84,7 +84,7 @@ const SiteHeader = () => {
             style={{ fontFamily: "Franklin Gothic",flex: 1, color: "#FFC300" }}
            
           >
-            ASSIGNMENT22
+            ICT2__ASSIGNMENT2__
 
           </Typography>
           {menuOptions2.map((opt) => (

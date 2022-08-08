@@ -10,6 +10,7 @@ import Spinner from "../spinner"
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    backgroundColor: "#581845",
     paddingTop: theme.spacing(7),
 
   },

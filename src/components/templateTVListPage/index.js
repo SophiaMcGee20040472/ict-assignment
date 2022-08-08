@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TVList from "../tvList";
 const useStyles = makeStyles((theme) =>  ({
   root: {
-    backgroundColor: "#BFBFBF",
+    backgroundColor: "#581845",
     paddingTop: theme.spacing(7),
   },
   fab: {

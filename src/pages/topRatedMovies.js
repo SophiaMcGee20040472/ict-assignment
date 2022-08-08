@@ -5,6 +5,7 @@ import Spinner from "../components/spinner"
 import { useQuery } from "react-query";
 import PlaylistAddIcons from "../components/cardIcons/playlistAddIcon";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
+import AddFantasyIcon from "../components/cardIcons/addMyFantasy";
 
 const TopRatedPage = (props) => {
   const {  data, error, isLoading, isError }  = useQuery('top-rated', getTopRatedMovies)
@@ -26,7 +27,7 @@ const TopRatedPage = (props) => {
     action={(movie) => {
       return <div>
       <AddToFavouritesIcon movie={movie} />
-       <PlaylistAddIcons movie={movie} />
+      <AddFantasyIcon movie={movie} />
         </div>
     
     }}

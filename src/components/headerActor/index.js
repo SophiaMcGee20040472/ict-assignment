@@ -34,16 +34,16 @@ const ActorHeader = (props) => {
   return (
     <Paper component="div" className={classes.root} >
       <IconButton aria-label="go back" onClick={() => nav(-1)}>
-        <ArrowBackIcon style={{ color: "#DAF7A6" }} fontSize="large" />
+        <ArrowBackIcon style={{ color: "#FFC300" }} fontSize="large" />
       </IconButton>
-      <Typography variant="h4" component="h3" style={{ color: "#DAF7A6" }}>
+      <Typography variant="h4" component="h3" style={{ color: "#FFC300" }}>
        Biography for the Actor {actor.name} 
         <br />
         
-        <span className={classes.tagLine} style={{ color: "#DAF7A6" }}>{`   "${actor.place_of_birth}"`}</span>
+        <span className={classes.tagLine} style={{ color: "#FFC300" }}>{`   "${actor.place_of_birth}"`}</span>
       </Typography>
       <IconButton aria-label="go forward" onClick={() => nav(1)}>
-        <ArrowForwardIcon style={{ color: "#DAF7A6" }} fontSize="large" />
+        <ArrowForwardIcon style={{ color: "#FFC300" }} fontSize="large" />
       </IconButton>
     </Paper>
   );

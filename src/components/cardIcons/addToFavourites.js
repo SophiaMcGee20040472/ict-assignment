@@ -11,9 +11,8 @@ const AddToFavouritesIcon = ({ movie }) => {
     context.addToFavourites(movie);
   };
   return (
-    <IconButton  aria-label="add to favorites" onClick={handleAddToFavourites} >
-      <FavoriteIcon  style={{color:'#FF5733'}}
- fontSize="large" />
+    <IconButton aria-label="add to favorites" onClick={handleAddToFavourites}>
+      <FavoriteIcon style={{ color: "#C70039" }} fontSize="large" />
     </IconButton>
   );
 };

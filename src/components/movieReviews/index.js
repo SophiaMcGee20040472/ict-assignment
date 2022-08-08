@@ -32,7 +32,7 @@ export default function MovieReviews({ movie }) {
         <TableHead>
           <TableRow>
             <TableCell >Author</TableCell>
-            <TableCell style={{backgroundColor:'#FFC300',color:'white'}} align="center">Excerpt</TableCell>
+            <TableCell style={{backgroundColor:'#FFC300',color:'#DAF7A6 '}} align="center">Excerpt</TableCell>
             <TableCell style={{backgroundColor:'#FF5733'}} align="right">More</TableCell>
           </TableRow>
         </TableHead>

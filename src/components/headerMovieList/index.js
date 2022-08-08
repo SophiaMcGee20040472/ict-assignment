@@ -14,9 +14,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-around",
     alignItems: "center",
     flexWrap: "wrap",
-    marginBottom: theme.spacing(2.6),
+    marginBottom: theme.spacing(3.5),
     marginRight: theme.spacing(-2.4),
     marginLeft: theme.spacing(-2.4),
+    paddingBottom:12,
+    paddingTop:12,
     backgroundColor:'#900C3F'
   },
 }));
@@ -30,7 +32,7 @@ const Header = (props ) => {
  <IconButton aria-label="go back"  onClick={() => navigate(-1)}>
         <ArrowBackIcon style={{ color:'#DAF7A6'}} fontSize="large" />
       </IconButton>
-      <Typography variant="h6" component="h6" style={{color:'#DAF7A6', fontFamily:"Franklin Gothic" }}>
+      <Typography variant="h5" component="h5" style={{color:'#DAF7A6', fontFamily:"Franklin Gothic" }}>
         {title}
       </Typography>
       <IconButton aria-label="go forward"  onClick={() => navigate(1)}>

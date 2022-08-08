@@ -18,8 +18,8 @@ import PlaylistAddIcons from "../cardIcons/playlistAddIcon";
 import { useState } from "react";
 
 const useStyles = makeStyles({
-  card: { maxWidth: 345 },
-  media: { height: 500 },
+  card: { maxWidth: 300},
+  media: { height: 280 },
   avatar: {
     
   },
@@ -37,12 +37,7 @@ export default function MovieCard({ movie, action }) {
     movie.favourite = false
   }
 
-  let link = ""
-  if(movie.type === "MOVIE") {
-    link = "movies"
-  } else if (movie.type === "TVSERIES"){
-    link = "tv"
-  } 
+
 
   const handleAddToFavourite = (e) => {
     e.preventDefault();
@@ -61,26 +56,26 @@ export default function MovieCard({ movie, action }) {
 };
 
   return (
-    <Card className={classes.card} style={{flex:1, backgroundColor:'#181818'}}>
+    <Card className={classes.card} style={{flex:1, backgroundColor:'#DAF7A6'}} >
       <CardHeader 
       className={classes.header} 
       avatar={
         movie.favourite ? (
-          <Avatar className={classes.avatar} style ={{color:'white', backgroundColor: '#FF5733'}} >
+          <Avatar className={classes.avatar} style ={{color:'#900C3F', backgroundColor: '#FF5733'}} >
             <FavoriteIcon />
           </Avatar >
         ) : null
       }
       avatar1={
         movie.mustWatch ? (
-          <Avatar className={classes.avatar1} style ={{color:'#E91E63', backgroundColor: 'white'}} >
+          <Avatar className={classes.avatar1} style ={{color:'#900C3F', backgroundColor: 'white'}} >
             <PlaylistAddIcons />
           </Avatar >
         ) : null
       }
 
       title={
-        <Typography variant="h5" component="p" style={{color:'#DAF7A6',textAlign:"center"}}>
+        <Typography variant="h5" component="p" style={{color:'#900C3F',textAlign:"center"}}>
           {movie.title}{" "}
         </Typography>
       }
@@ -97,14 +92,14 @@ export default function MovieCard({ movie, action }) {
       <CardContent>
         <Grid container>
           <Grid item xs={6}>
-            <Typography variant="h6" component="p" style={{color:'white'}}>
+            <Typography variant="h6" component="p" style={{color:'#581845 '}}>
               <CalendarIcon fontSize="small"/><br></br>
               {movie.release_date}
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="h6" component="p" style={{color:'white',textAlign:"right"}}>
-              <StarRateIcon fontSize="small" style={{color:'#FFC300',textAlign:"right"}} />
+            <Typography variant="h6" component="p" style={{color:'#581845  ',textAlign:"right"}}>
+              <StarRateIcon fontSize="small" style={{color:'#581845  ',textAlign:"right"}} />
               {"  "} {movie.vote_average}{" "} 
             </Typography>
           </Grid>
@@ -113,7 +108,7 @@ export default function MovieCard({ movie, action }) {
       <CardActions >
         {action(movie)}
         <Link to={`/movies/${movie.id}`}>
-        <Button variant="outlined" size="medium" style ={{background:"#900C3F ", color:"#DAF7A6" }}>
+        <Button variant="outlined" size="medium" style ={{background:"#581845  ", color:"#DAF7A6" }}>
             More Info ...
           </Button>
         </Link>

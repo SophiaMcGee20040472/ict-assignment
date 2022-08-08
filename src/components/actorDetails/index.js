@@ -47,20 +47,20 @@ const classes = useStyles();
       <Typography variant="h5" component="h3">
         Biography
       </Typography>
-      {actor.name}
+      <Typography style ={{color:"#FFC300"}}>{actor.name}</Typography>
       <Typography variant="h6" component="p">
        {actor.biography}
       </Typography>
       <div className={classes.chipRoot}>
       <Chip
-          style={{background:"black", color:"white"}}
-          icon={<Cake style={{color:"orange"}} />}
+          style={{background:"#900C3F", color:"#DAF7A6"}}
+          icon={<Cake style={{color:"#FFC300 "}} />}
           label={`${actor.birthday}` } 
         />
-      <Paper component="ul" className={classes.chipSet} >
-        <Chip style={{background:"black", color:"white"}} icon={< Face style={{color:"orange"}} />} label={`${actor.name}`} />
-        <Chip style={{background:"black", color:"white"}} icon={<Work style={{color:"orange"}}  />} label={`${actor.known_for_department}`} />
-        <Chip style={{background:"black", color:"white"}} icon={<ErrorOutlinedIcon style={{color:"orange"}}  />} label={`${actor.popularity}`} />
+      <Paper component="ul" className={classes.chipSet} style={{background:"#581845"}} >
+        <Chip style={{background:"#900C3F", color:"#DAF7A6"}} icon={< Face style={{color:"#FFC300"}} />} label={`${actor.name}`} />
+        <Chip style={{background:"#900C3F", color:"#DAF7A6"}} icon={<Work style={{color:"#FFC300"}}  />} label={`${actor.known_for_department}`} />
+        <Chip style={{background:"#900C3F", color:"#DAF7A6"}} icon={<ErrorOutlinedIcon style={{color:"#FFC300"}}  />} label={`${actor.popularity}`} />
       </Paper>
       </div>
       

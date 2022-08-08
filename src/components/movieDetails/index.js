@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     listStyle: "none",
     padding: theme.spacing(1.5),
     margin: 0,
+    background:"#581845"
     
   },
   chipSet: {
@@ -51,35 +52,39 @@ const MovieDetails = ( {movie}) => {
 
   return (
     <>
-      <Typography variant="h5" component="h3">
+      <Typography variant="h5" component="h3" style={{color:"#DAF7A6"}}>
         Overview
       </Typography>
 
-      <Typography variant="h6" component="p">
+      <Typography variant="h6" component="p" style={{color:"#DAF7A6"}}>
         {movie.overview}
       </Typography>
       <div className={classes.chipRoot} >
-      <Paper component="ul" className={classes.chipSet}>
+      <Paper component="ul" className={classes.chipSet} style={{background:"#581845"}}>
         <li>
-          <Chip label="Genres" className={classes.chipLabel} color="secondary" />
+          <Chip label="Genres" className={classes.chipLabel} style={{background:"#900C3F",color:"#DAF7A6"}} />
         </li>
         {movie.genres.map((g) => (
           <li key={g.name}>
-            <Chip label={g.name} className={classes.chip} style={{background:"pink"}} />
+            <Chip label={g.name} className={classes.chip} style={{background:"#900C3F",color:"#DAF7A6"}} />
           </li>
         ))}
       </Paper>
-      <Paper component="ul" className={classes.chipSet}>
-        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
+      <Paper component="ul" className={classes.chipSet} style={{background:"#581845",color:"#DAF7A6"}}>
+        <Chip icon={<AccessTimeIcon style={{color:"#FFC300"}} />} label={`${movie.runtime} min.`}
+       style={{background:"#900C3F",color:"#DAF7A6"}} />
         <Chip
-          icon={<MonetizationIcon />}
+          icon={<MonetizationIcon style={{color:"#FFC300"}} />}
           label={`${movie.revenue.toLocaleString()}`}
+          style={{background:"#900C3F",color:"#DAF7A6"}}
         />
         <Chip
-          icon={<StarRate />}
+          icon={<StarRate style={{color:"#FFC300"}}/>}
           label={`${movie.vote_average} (${movie.vote_count}`}
+          style={{background:"#900C3F",color:"#DAF7A6"}}
         />
-        <Chip label={`Released: ${movie.release_date}`} />
+        <Chip label={`Released: ${movie.release_date}`}
+        style={{background:"#900C3F",color:"#DAF7A6"}} />
       </Paper>
       </div>
       {}

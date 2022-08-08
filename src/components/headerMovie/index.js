@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tagLine: {
     fontSize: "1.5rem",
-    color: "white",
+    color: "#DAF7A6",
   },
 }));
 
@@ -30,20 +30,15 @@ const MovieHeader = (props) => {
   return (
     <Paper component="div" className={classes.root}>
       <IconButton aria-label="go back">
-        <ArrowBackIcon style={{ color: "white" }} fontSize="large" />
+        <ArrowBackIcon  fontSize="large" style={{ color: "#DAF7A6" }} />
       </IconButton>
-      <Typography variant="h4" component="h3" style={{ color: "white" }}>
+      <Typography variant="h4" component="h3" style={{ color: "#DAF7A6" }}>
         {movie.title}
-        <a href={movie.homepage}>
-          <span>
-            <HomeIcon style={{ color: "white" }} />
-          </span>
-        </a>
         <br />
         <span className={classes.tagLine}>{`   "${movie.tagline}"`} </span>
       </Typography>
       <IconButton aria-label="go forward">
-        <ArrowForwardIcon style={{ color: "white" }} fontSize="large" />
+        <ArrowForwardIcon  fontSize="large" style={{ color: "#DAF7A6" }}/>
       </IconButton>
     </Paper>
   );

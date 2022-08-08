@@ -7,9 +7,9 @@ import Box from "@material-ui/core/Box";
 import { useForm } from "react-hook-form";
 import { MoviesContext } from "../../contexts/moviesContext";
 import MenuItem from "@material-ui/core/MenuItem";
-import Snackbar from "@material-ui/core/Snackbar"; 
+import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 const ratings = [
   {
@@ -40,13 +40,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-
   },
   form: {
     width: "100%",
     "& > * ": {
       marginTop: theme.spacing(1.2),
-      backgroundColor:'white'
+      backgroundColor: "white",
     },
   },
   textField: {
@@ -55,42 +54,42 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     marginRight: theme.spacing(2),
   },
-  snack:{
-    width:"50%",
-    "& > * ":{
-     width: "100%"
-    }
-  }
+  snack: {
+    width: "50%",
+    "& > * ": {
+      width: "100%",
+    },
+  },
 }));
 
 const ReviewForm = ({ movie }) => {
-    const classes = useStyles();
-    const { register, handleSubmit, errors, reset } = useForm();
-    const context = useContext(MoviesContext);
-    const [rating, setRating] = useState(3);
-    const [open, setOpen] = useState(false);  //NEW
-    const navigate = useNavigate()          
-  
-    const handleRatingChange = (event) => {
-      setRating(event.target.value);
-    };
-  
-    const handleSnackClose = (event) => {     
-      setOpen(false);
-      navigate("/movies/favourites");
-    };
-  
-    const onSubmit = (review) => {
-      review.movieId = movie.id;
-      review.rating = rating;
-      // console.log(review);
-      context.addReview(movie, review);
-      setOpen(true);  
-    };
+  const classes = useStyles();
+  const { register, handleSubmit, errors, reset } = useForm();
+  const context = useContext(MoviesContext);
+  const [rating, setRating] = useState(3);
+  const [open, setOpen] = useState(false); //NEW
+  const navigate = useNavigate();
+
+  const handleRatingChange = (event) => {
+    setRating(event.target.value);
+  };
+
+  const handleSnackClose = (event) => {
+    setOpen(false);
+    navigate("/movies/favourites");
+  };
+
+  const onSubmit = (review) => {
+    review.movieId = movie.id;
+    review.rating = rating;
+    // console.log(review);
+    context.addReview(movie, review);
+    setOpen(true);
+  };
 
   return (
     <Box component="div" className={classes.root}>
-      <Typography style={{color:'#7197d1'}}component="h2" variant="h3">
+      <Typography style={{ color: "#DAF7A6" }} component="h2" variant="h3">
         Write a review
       </Typography>
       <Snackbar
@@ -147,7 +146,7 @@ const ReviewForm = ({ movie }) => {
           })}
         />
         {errors.content && (
-          <Typography variant="h6" component="p" >
+          <Typography variant="h6" component="p">
             {errors.content.message}
           </Typography>
         )}
@@ -159,7 +158,6 @@ const ReviewForm = ({ movie }) => {
           value={rating}
           onChange={handleRatingChange}
           helperText="Don't forget your rating"
-          
         >
           {ratings.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -168,11 +166,11 @@ const ReviewForm = ({ movie }) => {
           ))}
         </TextField>
 
-        <Box className={classes.buttons}>
+        <Box className={classes.buttons} style={{ background: "#581845" }}>
           <Button
             type="submit"
             variant="contained"
-            color="primary"
+            style={{ background: "#C70039", color: "#DAF7A6" }}
             className={classes.submit}
           >
             Submit
@@ -180,7 +178,7 @@ const ReviewForm = ({ movie }) => {
           <Button
             type="reset"
             variant="contained"
-            color="secondary"
+            style={{ background: "#FFC300" }}
             className={classes.submit}
             onClick={() => {
               reset({

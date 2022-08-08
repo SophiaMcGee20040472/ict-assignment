@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     listStyle: "none",
     padding: theme.spacing(1.5),
     margin: 0,
+    color: "#DAF7A6",
   },
   chipSet: {
     display: "flex",
@@ -49,29 +50,29 @@ const classes = useStyles();
         {tvSeries.overview}
       </Typography>
       <div className={classes.chipRoot}>
-      <Paper component="ul" className={classes.chipSet}>
-      <Chip icon={<AccessTimeIcon style={{background:"black", color:"#FFC300"}} />} label={`${tvSeries.episode_run_time} min`}  style={{background:"black", color:"#DAF7A6"}} />
-        <Chip label={`Episodes: ${tvSeries.number_of_episodes}`}  style={{background:"black", color:"#DAF7A6"}} />
-        <Chip style={{background:"black", color:"#DAF7A6"}} label={`First Aired: ${tvSeries.first_air_date}` } />
+      <Paper component="ul" className={classes.chipSet} style = {{ background: "#581845"}}>
+      <Chip icon={<AccessTimeIcon style={{background:"#C70039 ", color:"#FFC300"}} />} label={`${tvSeries.episode_run_time} min`}  style={{background:"#C70039 ", color:"#DAF7A6"}} />
+        <Chip label={`Episodes: ${tvSeries.number_of_episodes}`}  style={{background:"#C70039 ", color:"#DAF7A6"}} />
+        <Chip style={{background:"#C70039 ", color:"#DAF7A6"}} label={`First Aired: ${tvSeries.first_air_date}` } />
       </Paper>
       
-      <Paper component="ul" className={classes.chipSet}>
+      <Paper component="ul" className={classes.chipSet} style = {{ background: "#581845"}}>
         <li>
-          <Chip label="Production Countries" className={classes.chipLabel}  style={{background:"black", color:"#DAF7A6"}} />
+          <Chip label="Production Countries" className={classes.chipLabel}  style={{background:"#C70039 ", color:"#DAF7A6"}} />
         </li>
         {tvSeries.production_countries.map((p) => (
           <li key={p.name}>
-            <Chip label={p.name} className={classes.chip}  style={{background:"black", color:"#DAF7A6"}} />
+            <Chip label={p.name} className={classes.chip}  style={{background:"#C70039 ", color:"#DAF7A6"}} />
           </li>
         ))}
       </Paper>
-      <Paper component="ul" className={classes.chipSet} >
+      <Paper component="ul" className={classes.chipSet} style = {{ background: "#581845"}}>
         <li>
-          <Chip label="Genres" className={classes.chipLabel}  style={{background:"black", color:"#DAF7A6"}} />
+          <Chip label="Genres" className={classes.chipLabel}  style={{background:"#C70039 ", color:"#DAF7A6"}} />
         </li>
         {tvSeries.genres.map((g) => (
           <li key={g.name}>
-            <Chip label={g.name} className={classes.chip}  style={{background:"black", color:"#DAF7A6"}}/>
+            <Chip label={g.name} className={classes.chip}  style={{background:"#C70039", color:"#DAF7A6"}}/>
           </li>
         ))}
       </Paper>

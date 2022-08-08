@@ -9,7 +9,7 @@ import ActorList from "../actorList";
 
 const useStyles = makeStyles((theme) =>  ({
   root: {
-    backgroundColor: "#bfbfbf",
+    backgroundColor: "#581845",
     paddingTop: theme.spacing(7),
   },
   fab: {

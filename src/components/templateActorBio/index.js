@@ -4,12 +4,14 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import ImageList from "@material-ui/core/ImageList";
 import ImageListItem from "@material-ui/core/ImageListItem";
-import { getActorsImage } from "../../api/tmdb-api";
+import { getActorsImage, getActorsMovies } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../spinner";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    backgroundColor: "#581845",
+    color:"#DAF7A6",
     paddingTop: theme.spacing(7),
   },
   imageListRoot: {
@@ -27,7 +29,7 @@ const TemplateActorBioPage = ({ actor, children }) => {
   const classes = useStyles();
   const { data, error, isLoading, isError } = useQuery(
     ["actor images", { id: actor.id }],
-    getActorsImage
+    getActorsImage , getActorsMovies
   );
 
   if (isLoading) {
@@ -54,7 +56,6 @@ const TemplateActorBioPage = ({ actor, children }) => {
             </ImageList>
           </div>
         </Grid>
-
         <Grid item xs={9}>
           {children}
         </Grid>
