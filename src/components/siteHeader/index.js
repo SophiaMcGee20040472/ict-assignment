@@ -13,7 +13,6 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Button, Select } from "@material-ui/core";
 import Nav from "../nav/nav";
-import SearchBox from "../SearchBox";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -50,6 +49,7 @@ const SiteHeader = () => {
     { name: "SIMILAR MOVIES", path: "movies/similar" },
     { name: "UPCOMING", path: "/movies/upcoming" },
     { name: "TV DETAILS", path: "/tv/tv_id" },
+   
   ];
   const menuOptions2 = [
     { name: "HOME", path: "/" },
@@ -116,6 +116,7 @@ const SiteHeader = () => {
           >
             All you need to know about Movies!
           </Typography>
+  
 
           {isMobile ? (
             <>

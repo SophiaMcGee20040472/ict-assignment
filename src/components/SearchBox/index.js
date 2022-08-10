@@ -1,15 +1,20 @@
 import React from 'react';
+import { Users } from '../users';
+import { useState } from 'react';
 
 const SearchBox = (props) => {
+	const [query, setQuery] = useState("");
+	console.log(query)
 	return (
-		<div className='col col-sm-4'>
+		<div >
 			<input
-				className='form-control'
-				value={props.value}
-				onChange={(event) => props.setSearchValue(event.target.value)}
-                style = {{background: "#DAF7A6", color:"purple"}}
+				type= "text"
 				placeholder='Type to search...'
-			></input>
+				className='search' 
+				onChange={(e)=> setQuery(e.target.value)}/>
+				<ul className="list">
+					{Users.map((user)=>(<li key={user.id} className='="listItem'>{user.name}</li>))}
+					</ul>
 		</div>
 	);
 };

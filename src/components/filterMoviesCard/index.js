@@ -9,7 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { getActors, getGenres } from "../../api/tmdb-api";
+import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../spinner";
 
@@ -28,12 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FilterMoviesCard(props) {
   const classes = useStyles();
-  const { data, error, isLoading, isError } = useQuery(
-    "genres",
-    "actor",
-    getActors,
-    getGenres
-  );
+  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
 
   if (isLoading) {
     return <Spinner />;
@@ -43,10 +38,9 @@ export default function FilterMoviesCard(props) {
     return <h1>{error.message}</h1>;
   }
   const genres = data.genres;
-  if (genres[0].name !== "All") {
+  if (genres[0].name !== "All"){
     genres.unshift({ id: "0", name: "All" });
   }
-
 
   const handleChange = (e, type, value) => {
     e.preventDefault();
@@ -64,13 +58,9 @@ export default function FilterMoviesCard(props) {
 
   return (
     <>
-      <Card
-        className={classes.root}
-        variant="outlined"
-        style={{ background: "#581845" }}
-      >
+      <Card className={classes.root} variant="outlined" style ={{background:'#581845'}}>
         <CardContent>
-          <Typography variant="h5" component="h1" style={{ color: "white" }}>
+          <Typography variant="h5" component="h1" style ={{color:'white'}}>
             <SearchIcon fontSize="large" />
             Filter the movies.
           </Typography>
@@ -101,28 +91,30 @@ export default function FilterMoviesCard(props) {
             </Select>
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel id="genre-label">Actor Search</InputLabel>
+            <InputLabel id="genre-label">Genre</InputLabel>
             <Select
               labelId="genre-label"
               id="genre-select"
               value={props.genreFilter}
               onChange={handleGenreChange}
             >
-              {genres.map((ge) => {
+              {genres.map((genre) => {
                 return (
-                  <MenuItem key={genres.id} value={genres.id}>
-                    {genres.name}
+                  <MenuItem key={genre.id} value={genre.id}>
+                    {genre.name}
                   </MenuItem>
                 );
               })}
             </Select>
+
+
           </FormControl>
         </CardContent>
-      </Card>
+      </Card >
       <Card className={classes.root} variant="outlined">
-        <CardContent style={{ background: "#900C3F" }}>
+        <CardContent style ={{background:'#900C3F'}}>
           <Typography variant="h5" component="h1">
-            <SearchIcon fontSize="large" />
+            <SearchIcon fontSize="large"/>
             Sort the movies.
           </Typography>
         </CardContent>

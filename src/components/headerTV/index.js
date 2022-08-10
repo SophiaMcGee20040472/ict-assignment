@@ -26,23 +26,24 @@ const useStyles = makeStyles((theme) => ({
 
 const TvHeader = (props) => {
   const classes = useStyles();
-  const tvSeries = props.tvSeries;
   const nav = useNavigate();
+  const name = props.title
 
   return (
     <Paper component="div" className={classes.root}>
       <IconButton aria-label="go back" onClick={() => nav(-1)}>
         <ArrowBackIcon style={{ color: "#DAF7A6" }} fontSize="large" />
       </IconButton>
-      <Typography variant="h4" component="h3" style={{ color: "#DAF7A6" }}>
-        {tvSeries.name}
+      <Typography variant="h4" component="h3" style={{ color: "#DAF7A6", fontSize:25 }}>
+        {name}
         <br />
-        <span className={classes.tagLine} style={{ color: "#DAF7A6" }}>{`   "${tvSeries.tagline}"`} </span>
       </Typography>
       <IconButton aria-label="go forward" onClick={() => nav(1)}>
         <ArrowForwardIcon style={{ color: "#DAF7A6" }} fontSize="large" />
       </IconButton>
+
     </Paper>
+    
   );
 };
 

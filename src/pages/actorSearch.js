@@ -1,0 +1,38 @@
+import React from "react";
+import ActorPageTemplate from "../components/templateActorPage";
+import { useQuery } from "react-query";
+import Spinner from "../components/spinner";
+import { getActors } from "../api/tmdb-api";
+import { getActorsImage } from "../api/tmdb-api";
+import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+import Search from "@material-ui/icons/Search";
+
+
+const ActorSearchPage = (props) => {
+  const { data, error, isLoading, isError } = useQuery(
+    "actors",
+    getActors,
+    getActorsImage
+  );
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+  const actors = data.results;
+
+  return (
+    <ActorPageTemplate
+      title="ACTORS LIST"
+      actor={actors}
+      action={(actor) => {
+        return <AddToFavouritesIcon actor={actor} />;
+      }}
+    />
+  );
+};
+
+export default ActorSearchPage;

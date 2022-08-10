@@ -4,7 +4,9 @@ import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
 import {getTVSeries} from '../api/tmdb-api'
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
+import AddToFavTvIcon from "../components/cardIcons/addTvFavourite";
 import TVListPageTemplate from "../components/templateTVListPage";
+
 
 const TVSeriesPage = (props) => {
   const {  data, error, isLoading, isError }  = useQuery('tv', getTVSeries)
@@ -14,14 +16,14 @@ const TVSeriesPage = (props) => {
   if (isError) {
     return <h1>{error.message}</h1>
   }
-  const tvseries = data.results;
+  const tvSeries = data.results;
 
   return (
     <TVListPageTemplate
       title="TV SERIES"
-      tvseries={tvseries}
+      tvseries={tvSeries}
       action={(tv) => {
-        return <AddToFavouritesIcon tv={tv} />
+        return <AddToFavTvIcon tv={tv} />
       }}
     />
 );

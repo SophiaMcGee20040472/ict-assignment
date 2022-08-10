@@ -2,7 +2,7 @@ import React from 'react';
 import TVCard from '../components/tvCard';
 import SampleTv from './sampleTvSeriesData';
 import { MemoryRouter } from 'react-router';
-// import MoviesContextProvider from '../contexts/moviesContext';
+import MoviesContextProvider from '../contexts/moviesContext';
 import { action } from '@storybook/addon-actions';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavourites';
 import sampleTvSeriesData from './sampleTvSeriesData';
@@ -14,6 +14,7 @@ export default {
   component: TVCard,
   decorators: [
     (Story) => <MemoryRouter initialEntries={['/']}>{Story()}</MemoryRouter>,
+    (Story) => <MoviesContextProvider>{Story()}</MoviesContextProvider>,
   ],
 };
 
@@ -33,8 +34,8 @@ export const Exceptional = () => {
     return (
       <TVCard
         tv={sampleNoPoster}
-        action={(tv) => <AddToFavoritesIcon tv={tv} />}
-        taging={(tv) => null}
+        action={(tvseries) => <AddToFavoritesIcon tv={tvseries} />}
+        taging={(tvseries) => null}
       />
     );
   };

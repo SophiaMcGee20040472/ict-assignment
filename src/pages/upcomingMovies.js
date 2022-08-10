@@ -6,6 +6,7 @@ import { useQuery } from "react-query";
 import PlaylistAddIcons from "../components/cardIcons/playlistAddIcon";
 import SimilarMoviePage from "./similarMoviesPage";
 
+
 const UpcomingMoviePage = () => {
   const { data, error, isLoading, isError }  = useQuery('movie', getUpcomingMovies)
   
@@ -24,8 +25,7 @@ const UpcomingMoviePage = () => {
     title='UPCOMING MOVIES'
     movies={movies}
     action={(movie) => {
-      return <PlaylistAddIcons movie={movie}  />
-      
+      return <PlaylistAddIcons movie={movie}  />     
     }}
   />
   );

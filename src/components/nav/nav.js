@@ -15,6 +15,7 @@ function Nav() {
         { name: "NOW - PLAYING", path: "movies/now-playing" },
         { name: "POPULAR MOVIES", path: "movies/popular" },
         { name: "MY FANTASY", path: "/movies/fantasy"},
+        { name: "FAVOURITE TV", path: "/tvseries/favTv"},
       
     ];
     setNavLinks(navs);
@@ -25,12 +26,12 @@ function Nav() {
     <div>
       <nav style={{backgroundColor:'#581845'}}>
         <div className="container">
-          <div class="btn-group" >
-            <div class="dropdown-menu dropdown-menu-end" >
+          <div className="btn-group" >
+            <div className="dropdown-menu dropdown-menu-end" >
               {navLinks.map((d, i) => (
                 <div key={i}>
                   <Link to={d.path} >
-                    <button class="dropdown-item" type="button" align="left" 
+                    <button className="dropdown-item" type="button" align="left" 
                     style={{
                         backgroundColor:'#581845',
                         border:'none',
