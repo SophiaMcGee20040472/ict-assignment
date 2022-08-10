@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import TvHeader from "../headerTV";
-import FilterCard from "../filterMoviesCard";
 import Grid from "@material-ui/core/Grid";
-import Fab from "@material-ui/core/Fab";
-import Drawer from "@material-ui/core/Drawer";
 import { makeStyles } from "@material-ui/core/styles";
 import TVSeriesList from "../tvSeriesList";
 
