@@ -13,11 +13,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#581845",
     color:"#DAF7A6",
     paddingTop: theme.spacing(7),
+    marginRight:-10,
+    marginLeft:-10
+    
   },
   imageListRoot: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-around",
+    
   },
   imageList: {
     width: 450,

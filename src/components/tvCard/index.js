@@ -13,8 +13,8 @@ import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
- card: { maxWidth: 300},
-  media: { height: 250 },
+  card: { maxWidth: 290 },
+  media: { height: 220 },
   backgroundColor: "#FF5733 ",
 });
 export default function TVCard({ tv, action }) {

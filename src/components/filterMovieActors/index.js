@@ -9,7 +9,8 @@ import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { getActorsMovies } from "../../api/tmdb-api";
+import { getActors } from "../../api/tmdb-api";
+
 import { useQuery } from "react-query";
 import Spinner from "../spinner";
 
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FilterActorsMoviesCard(props) {
   const classes = useStyles();
-  const { data, error, isLoading, isError } = useQuery("cast", getActorsMovies);
+  const { data, error, isLoading, isError } = useQuery("actor", getActors);
 
   if (isLoading) {
     return <Spinner />;
@@ -37,9 +38,9 @@ export default function FilterActorsMoviesCard(props) {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  const casts = data.cast;
-  if (casts[0].name !== "All"){
-    casts.unshift({ id: "0", name: "All" });
+  const actor = data.actor;
+  if (actor[0].name !== "All"){
+    actor.unshift({ id: "0", name: "All" });
   }
 
   const handleChange = (e, type, value) => {
@@ -51,8 +52,8 @@ export default function FilterActorsMoviesCard(props) {
     handleChange(e, "name", e.target.value);
   };
 
-  const handleCastChange = (e) => {
-    handleChange(e, "cast", e.target.value);
+  const handleActorChange = (e) => {
+    handleChange(e, "actor", e.target.value);
   };
 
   return (
@@ -61,7 +62,7 @@ export default function FilterActorsMoviesCard(props) {
         <CardContent>
           <Typography variant="h5" component="h1" style ={{color:'white'}}>
             <SearchIcon fontSize="large" />
-            Filter the movies.
+            Filter the Actors.
           </Typography>
           <TextField
             className={classes.formControl}
@@ -73,17 +74,34 @@ export default function FilterActorsMoviesCard(props) {
             onChange={handleTextChange}
           />
           <FormControl className={classes.formControl}>
-            <InputLabel id="cast-label">Cast</InputLabel>
+            <InputLabel id="actor-label">Actor</InputLabel>
             <Select
-              labelId="cast-label"
-              id="cast-select"
-              value={props.castFilter}
-              onChange={handleCastChange}
+              labelId="actor-label"
+              id="actor-select"
+              value={props.actorFilter}
+              onChange={handleActorChange}
             >
-              {casts.map((cast) => {
+              {actor.map((actor) => {
                 return (
-                  <MenuItem key={cast.id} value={cast.id}>
-                    {cast.name}
+                  <MenuItem key={actor.id} value={actor.id}>
+                    {actor.name}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+            </FormControl>
+          <FormControl className={classes.formControl}>
+            <InputLabel id="actor-label">Actor</InputLabel>
+            <Select
+              labelId="actor-label"
+              id="actor-select"
+              value={props.actorFilter}
+              onChange={handleActorChange}
+            >
+              {actor.map((actor) => {
+                return (
+                  <MenuItem key={actor.id} value={actor.id}>
+                    {actor.name}
                   </MenuItem>
                 );
               })}
@@ -95,7 +113,7 @@ export default function FilterActorsMoviesCard(props) {
         <CardContent style ={{background:'#900C3F'}}>
           <Typography variant="h5" component="h1">
             <SearchIcon fontSize="large"/>
-            Sort the movies.
+            Sort the Actors.
           </Typography>
         </CardContent>
       </Card>

@@ -3,7 +3,6 @@ import React from "react";
 import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
 import {getTVSeries} from '../api/tmdb-api'
-import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 import AddToFavTvIcon from "../components/cardIcons/addTvFavourite";
 import TVListPageTemplate from "../components/templateTVListPage";
 

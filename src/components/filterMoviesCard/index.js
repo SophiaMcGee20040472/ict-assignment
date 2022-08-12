@@ -9,7 +9,7 @@ import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { getGenres } from "../../api/tmdb-api";
+import { getActors, getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../spinner";
 
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FilterMoviesCard(props) {
   const classes = useStyles();
-  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  const { data, error, isLoading, isError } = useQuery("genres", getGenres ,"actor" ,getActors);
 
   if (isLoading) {
     return <Spinner />;
@@ -37,6 +37,7 @@ export default function FilterMoviesCard(props) {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
+
   const genres = data.genres;
   if (genres[0].name !== "All"){
     genres.unshift({ id: "0", name: "All" });
@@ -89,25 +90,6 @@ export default function FilterMoviesCard(props) {
                 );
               })}
             </Select>
-          </FormControl>
-          <FormControl className={classes.formControl}>
-            <InputLabel id="genre-label">Genre</InputLabel>
-            <Select
-              labelId="genre-label"
-              id="genre-select"
-              value={props.genreFilter}
-              onChange={handleGenreChange}
-            >
-              {genres.map((genre) => {
-                return (
-                  <MenuItem key={genre.id} value={genre.id}>
-                    {genre.name}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-
-
           </FormControl>
         </CardContent>
       </Card >

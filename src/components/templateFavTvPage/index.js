@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(8),
     position: "fixed",
     top: theme.spacing(2),
-    right: theme.spacing(2),
+    right: theme.spacing(3),
   },
 }));
 
@@ -29,8 +29,8 @@ function FavTvPageTemplate({ tvseries, title,action}) {
 return (
   <>
    
-  <Grid container className={classes.root}>
-        <Grid item xs={12}>
+  <Grid container className={classes.root} style ={{paddingRight:-30,paddingLeft:-30}}>
+        <Grid item xs={12} >
         <TvHeader title={title}/>
         </Grid>
         <Grid item container spacing={5}>
