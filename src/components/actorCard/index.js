@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   media: { height: 220 },
   backgroundColor: "#FF5733 ",
 });
-export default function ActorCard({ actor, action }) {
+export default function ActorCard({ actor }) {
   const classes = useStyles();
 
   return (

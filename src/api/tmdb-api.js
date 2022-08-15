@@ -124,6 +124,27 @@ export const getGenres = async () => {
       throw error;
     });
 };
+export const getLanguages = async () => {
+  return fetch(
+    `https://api.themoviedb.org/3/configuration/languages?api_key=${process.env.REACT_APP_TMDB_KEY}`
+  )
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      const languages = await response.json();
+
+      //sorting languages in alphabetical order
+      return languages.sort((a, b) =>
+        a.english_name > b.english_name ? 1 : -1
+      );
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
+
 
 export const getMovieImages = ({ queryKey }) => {
   const [, idPart] = queryKey;

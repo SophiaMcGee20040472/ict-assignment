@@ -57,6 +57,5 @@ export default function TVCard({ tv, action }) {
       </CardActions>
       <br></br>
     </Card>
-
   );
 }

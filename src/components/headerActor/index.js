@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { useNavigate } from "react-router-dom";
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -39,7 +40,7 @@ const ActorHeader = (props) => {
       <Typography variant="h4" component="h3" style={{ color: "#FFC300" }}>
        Biography for the Actor {actor.name} 
         <br />
-        
+   
         <span className={classes.tagLine} style={{ color: "#FFC300" }}>{`   "${actor.place_of_birth}"`}</span>
       </Typography>
       <IconButton aria-label="go forward" onClick={() => nav(1)}>

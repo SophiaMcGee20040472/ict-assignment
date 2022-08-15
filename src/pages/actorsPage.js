@@ -5,6 +5,7 @@ import Spinner from "../components/spinner";
 import { getActors } from "../api/tmdb-api";
 import { getActorsImage } from "../api/tmdb-api";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+import ActorListPageTemplate from "../components/templateActorPage";
 
 const ActorPage = (props) => {
   const { data, error, isLoading, isError } = useQuery(
@@ -23,9 +24,9 @@ const ActorPage = (props) => {
   const actors = data.results;
 
   return (
-    <ActorPageTemplate
+    <ActorListPageTemplate
       title="ACTORS LIST"
-      actor={actors}
+      actors={actors}
       action={(actor) => {
         return <AddToFavouritesIcon actor={actor} />;
       }}

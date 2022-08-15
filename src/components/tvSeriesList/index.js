@@ -1,7 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import TVCard from "../tvFavCard";
-import { getTVSeriesDetails} from "../../api/tmdb-api";
 
 const TVSeriesList = ( {tv, action }) => {
     console.log(tv);

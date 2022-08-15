@@ -12,6 +12,7 @@ import Select from "@material-ui/core/Select";
 import { getActors, getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../spinner";
+import { getLanguages } from "../../api/tmdb-api"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
 export default function FilterMoviesCard(props) {
   const classes = useStyles();
   const { data, error, isLoading, isError } = useQuery("genres", getGenres ,"actor" ,getActors);
+  const { data: languages } = useQuery("language", getLanguages);
+
 
   if (isLoading) {
     return <Spinner />;
@@ -54,6 +57,9 @@ export default function FilterMoviesCard(props) {
 
   const handleGenreChange = (e) => {
     handleChange(e, "genre", e.target.value);
+  };
+  const handleLanguageChange = (e, props) => {
+    handleChange(e, "language", e.target.value);
   };
 
 
@@ -86,6 +92,26 @@ export default function FilterMoviesCard(props) {
                 return (
                   <MenuItem key={genre.id} value={genre.id}>
                     {genre.name}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+          <FormControl className={classes.formControl}>
+            <InputLabel id="certification-label">Language</InputLabel>
+            <Select
+              labelId="language-label"
+              id="language-select"
+              value={props.languageFilter}
+              onChange={handleLanguageChange}
+            >
+              <MenuItem key={""} value={"all"}>
+                All
+              </MenuItem>
+              {languages?.map((l) => {
+                return (
+                  <MenuItem key={l.iso_639_1} value={l.iso_639_1}>
+                    {l.english_name}
                   </MenuItem>
                 );
               })}

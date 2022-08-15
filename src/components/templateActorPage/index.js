@@ -1,63 +1,69 @@
-import React, { useState } from "react";
-import Header from "../headerMovieList";
-import FilterCard from "../filterMoviesCard";
-import FilterActorsMoviesCard from "../filterMovieActors";
-import Grid from "@material-ui/core/Grid";
-import Fab from "@material-ui/core/Fab";
-import Drawer from "@material-ui/core/Drawer";
-import { makeStyles } from "@material-ui/core/styles";
-import ActorList from "../actorList";
-import TvHeader from "../headerTV";
+import React, { useState } from 'react';
+import Header from '../headerMovieList';
+import FilterCard from '../filterMoviesCard';
+import Grid from '@material-ui/core/Grid';
+import Fab from '@material-ui/core/Fab';
+import Drawer from '@material-ui/core/Drawer';
+import { makeStyles } from '@material-ui/core/styles';
+import ActorList from '../actorList';
 
-const useStyles = makeStyles((theme) =>  ({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#581845",
-    paddingLeft: theme.spacing(1),
-    marginRight:-1,
-    marginLeft:-1
-  
+    paddingTop: theme.spacing(7),
   },
   fab: {
-    marginTop: theme.spacing(9),
+    marginTop: theme.spacing(8),
     position: "fixed",
     top: theme.spacing(2),
     right: theme.spacing(3),
-    
   },
 }));
 
-function ActorPageTemplate({ actor, title,name, action}) {
+function ActorListPageTemplate({ actors, title, action }) {
   const classes = useStyles();
-  const [titleFilter, setTitleFilter] = useState("");
-  const [actorFilter, setActorFilter] = useState("0");
+  const [titleFilter, setTitleFilter] = useState('');
+  const [genreFilter, setGenreFilter] = useState('0');
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const actorId = Number(actorFilter);
+  const genreId = Number(genreFilter);
 
-  let displayedActors = actor
+  let displayedActors = actors
     .filter((m) => {
       return m.name.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
     })
     .filter((m) => {
-      return actorId > 0 ? m.actor_ids.includes(actorId) : true;
+      return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     });
 
   const handleChange = (type, value) => {
-    if (type === "title") setTitleFilter(value);
-    else setActorFilter(value);
+    if (type === 'title') setTitleFilter(value);
+    else setGenreFilter(value);
   };
 
   return (
     <>
-    <Grid container className={classes.root}>
-      <Grid item xs={12}>
-        <TvHeader title={title} />
+      <Grid container className={classes.root}>
+        <Grid item xs={12}>
+          <Header title={title} />
+        </Grid>
+        <Grid item container spacing={5}>
+          <ActorList action={action} actor={displayedActors} />
+        </Grid>
       </Grid>
-      <Grid item container spacing={5}>
-        <ActorList action={action} actor={displayedActors} />
-      </Grid>
-    </Grid>
-    </>    
+
+      <Drawer
+        anchor='left'
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      >
+        <FilterCard
+          onUserInput={handleChange}
+          titleFilter={titleFilter}
+          genreFilter={genreFilter}
+        />
+      </Drawer>
+    </>
   );
 }
-export default ActorPageTemplate;
+export default ActorListPageTemplate;
