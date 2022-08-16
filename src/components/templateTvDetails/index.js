@@ -7,6 +7,7 @@ import ImageListItem from "@material-ui/core/ImageListItem";
 import { getTvImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../spinner";
+import Header from "../headerMovieList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,8 +43,7 @@ const TemplateTvPage = ({ tvSeries, children }) => {
 
   return (
     <div className={classes.root}>
-      <TvHeader tvSeries={tvSeries} />
-
+      <Header name={tvSeries} />
       <Grid container spacing={5} style={{ padding: "15px" }}>
         <Grid item xs={3}>
           <div className={classes.imageListRoot}>

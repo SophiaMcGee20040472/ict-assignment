@@ -52,10 +52,12 @@ const MovieDetails = ( {movie}) => {
 
   return (
     <>
+       <Typography variant="h4" component="p" style={{color:"#FFC300"}}>
+        {movie.title}
+      </Typography>
       <Typography variant="h5" component="h3" style={{color:"#DAF7A6"}}>
         Overview
       </Typography>
-
       <Typography variant="h6" component="p" style={{color:"#DAF7A6"}}>
         {movie.overview}
       </Typography>

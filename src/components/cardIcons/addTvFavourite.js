@@ -12,7 +12,7 @@ const AddToFavTvIcon = ({ tv }) => {
   };
   return (
     <IconButton aria-label="add to TvFavs" onClick={handleAddToTvFavs}>
-      <FavoriteIcon style={{ color: "purple" }} fontSize="large" />
+      <FavoriteIcon style={{ color: "#581845" }} fontSize="large" />
     </IconButton>
   );
 };

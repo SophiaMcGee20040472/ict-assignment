@@ -12,7 +12,8 @@ import Select from "@material-ui/core/Select";
 import { getActors, getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../spinner";
-import { getLanguages } from "../../api/tmdb-api"
+import { Checkbox, FormControlLabel, FormGroup } from "@material-ui/core";
+import { getLanguages } from "../../api/tmdb-api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,9 +30,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FilterMoviesCard(props) {
   const classes = useStyles();
-  const { data, error, isLoading, isError } = useQuery("genres", getGenres ,"actor" ,getActors);
+  const { data, error, isLoading, isError } = useQuery(
+    "genres",
+    getGenres,
+    "actor",
+    getActors
+  );
   const { data: languages } = useQuery("language", getLanguages);
-
 
   if (isLoading) {
     return <Spinner />;
@@ -42,7 +47,7 @@ export default function FilterMoviesCard(props) {
   }
 
   const genres = data.genres;
-  if (genres[0].name !== "All"){
+  if (genres[0].name !== "All") {
     genres.unshift({ id: "0", name: "All" });
   }
 
@@ -54,6 +59,16 @@ export default function FilterMoviesCard(props) {
   const handleTextChange = (e, props) => {
     handleChange(e, "name", e.target.value);
   };
+  const handleTitleChange = (e, props) => {
+    handleChange(e, "title", e.target.value);
+  };
+  const handleActorChange = (e, props) => {
+    handleChange(e, "name", e.target.value);
+  };
+
+  const handleSortNameChange = (e) => {
+    handleChange(e, "sortTitle", e.target.checked);
+  };
 
   const handleGenreChange = (e) => {
     handleChange(e, "genre", e.target.value);
@@ -62,24 +77,54 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "language", e.target.value);
   };
 
-
   return (
     <>
-      <Card className={classes.root} variant="outlined" style ={{background:'#581845'}}>
+      <Card
+        className={classes.root}
+        variant="outlined"
+        style={{ background: "#581845" }}
+      >
         <CardContent>
-          <Typography variant="h5" component="h1" style ={{color:'white'}}>
-            <SearchIcon fontSize="large" />
-            Filter the movies.
+          <Typography variant="h5" component="h1" style={{ color: "white" }}>
+          <SearchIcon fontSize="large" />
+            Search Tv Page
           </Typography>
           <TextField
             className={classes.formControl}
             id="filled-search"
-            label="Search field"
+            label=" Tv Search field"
             type="search"
-            value={props.titleFilter}
+            value={props.nameFilter}
             variant="filled"
             onChange={handleTextChange}
           />
+          <Typography variant="h5" component="h1" style={{ color: "white" }}>
+          <SearchIcon fontSize="large" />
+          Search Actor Page.
+          </Typography>
+          <TextField
+            className={classes.formControl}
+            id="filled-search"
+            label="Actor Search field"
+            type="search"
+            value={props.TitleFilter}
+            variant="filled"
+            onChange={handleTitleChange}
+          />
+            <Typography variant="h5" component="h1" style={{ color: "white" }}>
+            <SearchIcon fontSize="large" />
+            Search Movie Page.
+          </Typography>
+          <TextField
+            className={classes.formControl}
+            id="filled-search"
+            label="Movie Search field"
+            type="search"
+            value={props.TitleFilter}
+            variant="filled"
+            onChange={handleTitleChange}
+          />
+
           <FormControl className={classes.formControl}>
             <InputLabel id="genre-label">Genre</InputLabel>
             <Select
@@ -118,12 +163,19 @@ export default function FilterMoviesCard(props) {
             </Select>
           </FormControl>
         </CardContent>
-      </Card >
+      </Card>
       <Card className={classes.root} variant="outlined">
-        <CardContent style ={{background:'#900C3F'}}>
+        <CardContent style={{ background: "#900C3F" }}>
           <Typography variant="h5" component="h1">
-            <SearchIcon fontSize="large"/>
-            Sort the movies.
+            <SearchIcon fontSize="large" />
+            SORT MOVIES
+            <h6>Sort Options</h6>
+            <FormGroup>
+              <FormControlLabel
+                control={<Checkbox onChange={handleSortNameChange} />}
+                label="Alphabetize movies?"
+              />
+            </FormGroup>
           </Typography>
         </CardContent>
       </Card>

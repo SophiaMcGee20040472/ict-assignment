@@ -27,11 +27,10 @@ function MovieListPageTemplate({ movies, title, action, selectMustWatch }) {
   const classes = useStyles();
   const [titleFilter, setTitleFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
-  const [certFilter, setCertFilter] = useState("G");
   const [languageFilter, setLanguageFilter] = useState("all");
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [checkedName, setCheckedName] = useState(false);
-  const [checkedRelease, setCheckedRelease] = useState(false);
+  const [checkName, setCheckName] = useState(false);
+
 
   const genreId = Number(genreFilter);
 
@@ -46,26 +45,19 @@ function MovieListPageTemplate({ movies, title, action, selectMustWatch }) {
             .search(languageFilter.toLowerCase()) !== -1
         : true;
     })
-    .filter((m) => {
-      return certFilter !== "G"
-        ? m.cert
-            .toLowerCase()
-            .search(certFilter.toLowerCase()) !== -1
-        : true;
-    })
+
     .filter((m) => {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     });
 
-    if (checkedName === true) {
+    if (checkName === true) {
       displayedMovies.sort((a, b) => a.title > b.title ? 1 : -1);
-    } else if (checkedRelease === true) {
-      displayedMovies.sort((a, b) => new Date(...a.release_date.split('/').reverse()) - new Date(...b.release_date.split('/').reverse()));
-    }
+    } 
 
   const handleChange = (type, value) => {
     if (type === "title") setTitleFilter(value);
     else if (type === "language") setLanguageFilter(value);
+    else if (type === "sortTitle") setCheckName(value);
 
     else setGenreFilter(value);
   };
@@ -98,6 +90,7 @@ function MovieListPageTemplate({ movies, title, action, selectMustWatch }) {
           titleFilter={titleFilter}
           genreFilter={genreFilter}
           languageFilter={languageFilter}
+          checkName={checkName}
         />
       </Drawer>
     </>
