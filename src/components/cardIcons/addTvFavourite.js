@@ -6,7 +6,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 const AddToFavTvIcon = ({ tv }) => {
   const context = useContext(MoviesContext);
 
-  const handleAddToTvFavs= (e) => {
+  const handleAddToTvFavs = (e) => {
     e.preventDefault();
     context.addToTvFavs(tv);
   };

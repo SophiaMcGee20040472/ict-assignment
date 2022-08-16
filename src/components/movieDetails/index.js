@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
-import MovieReviews from '../movieReviews'
+import MovieReviews from "../movieReviews";
 
 const useStyles = makeStyles((theme) => ({
   chipRoot: {
@@ -22,8 +22,7 @@ const useStyles = makeStyles((theme) => ({
     listStyle: "none",
     padding: theme.spacing(1.5),
     margin: 0,
-    background:"#581845"
-    
+    background: "#581845",
   },
   chipSet: {
     display: "flex",
@@ -33,76 +32,99 @@ const useStyles = makeStyles((theme) => ({
     listStyle: "none",
     padding: theme.spacing(1.5),
     margin: 0,
-    
   },
   chipLabel: {
     margin: theme.spacing(0.5),
-    
   },
-  fab: {  
+  fab: {
     position: "fixed",
     top: theme.spacing(15),
     right: theme.spacing(2),
   },
 }));
 
-const MovieDetails = ( {movie}) => {
+const MovieDetails = ({ movie }) => {
   const classes = useStyles();
   const [drawerOpen, setDrawerOpen] = useState(false); // New
 
   return (
     <>
-       <Typography variant="h4" component="p" style={{color:"#FFC300"}}>
+      <Typography variant="h4" component="p" style={{ color: "#FFC300" }}>
         {movie.title}
       </Typography>
-      <Typography variant="h5" component="h3" style={{color:"#DAF7A6"}}>
+      <Typography variant="h5" component="h3" style={{ color: "#DAF7A6" }}>
         Overview
       </Typography>
-      <Typography variant="h6" component="p" style={{color:"#DAF7A6"}}>
+      <Typography variant="h6" component="p" style={{ color: "#DAF7A6" }}>
         {movie.overview}
       </Typography>
-      <div className={classes.chipRoot} >
-      <Paper component="ul" className={classes.chipSet} style={{background:"#581845"}}>
-        <li>
-          <Chip label="Genres" className={classes.chipLabel} style={{background:"#900C3F",color:"#DAF7A6"}} />
-        </li>
-        {movie.genres.map((g) => (
-          <li key={g.name}>
-            <Chip label={g.name} className={classes.chip} style={{background:"#900C3F",color:"#DAF7A6"}} />
+      <div className={classes.chipRoot}>
+        <Paper
+          component="ul"
+          className={classes.chipSet}
+          style={{ background: "#581845" }}
+        >
+          <li>
+            <Chip
+              label="Genres"
+              className={classes.chipLabel}
+              style={{ background: "#900C3F", color: "#DAF7A6" }}
+            />
           </li>
-        ))}
-      </Paper>
-      <Paper component="ul" className={classes.chipSet} style={{background:"#581845",color:"#DAF7A6"}}>
-        <Chip icon={<AccessTimeIcon style={{color:"#FFC300"}} />} label={`${movie.runtime} min.`}
-       style={{background:"#900C3F",color:"#DAF7A6"}} />
-        <Chip
-          icon={<MonetizationIcon style={{color:"#FFC300"}} />}
-          label={`${movie.revenue.toLocaleString()}`}
-          style={{background:"#900C3F",color:"#DAF7A6"}}
-        />
-        <Chip
-          icon={<StarRate style={{color:"#FFC300"}}/>}
-          label={`${movie.vote_average} (${movie.vote_count}`}
-          style={{background:"#900C3F",color:"#DAF7A6"}}
-        />
-        <Chip label={`Released: ${movie.release_date}`}
-        style={{background:"#900C3F",color:"#DAF7A6"}} />
-      </Paper>
+          {movie.genres.map((g) => (
+            <li key={g.name}>
+              <Chip
+                label={g.name}
+                className={classes.chip}
+                style={{ background: "#900C3F", color: "#DAF7A6" }}
+              />
+            </li>
+          ))}
+        </Paper>
+        <Paper
+          component="ul"
+          className={classes.chipSet}
+          style={{ background: "#581845", color: "#DAF7A6" }}
+        >
+          <Chip
+            icon={<AccessTimeIcon style={{ color: "#FFC300" }} />}
+            label={`${movie.runtime} min.`}
+            style={{ background: "#900C3F", color: "#DAF7A6" }}
+          />
+          <Chip
+            icon={<MonetizationIcon style={{ color: "#FFC300" }} />}
+            label={`${movie.revenue.toLocaleString()}`}
+            style={{ background: "#900C3F", color: "#DAF7A6" }}
+          />
+          <Chip
+            icon={<StarRate style={{ color: "#FFC300" }} />}
+            label={`${movie.vote_average} (${movie.vote_count}`}
+            style={{ background: "#900C3F", color: "#DAF7A6" }}
+          />
+          <Chip
+            label={`Released: ${movie.release_date}`}
+            style={{ background: "#900C3F", color: "#DAF7A6" }}
+          />
+        </Paper>
       </div>
       {}
-      <Fab    
+      <Fab
         color="secondary"
         variant="extended"
-        onClick={() =>setDrawerOpen(true)}
+        onClick={() => setDrawerOpen(true)}
         className={classes.fab}
       >
         <NavigationIcon />
         Reviews
       </Fab>
-      <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+      <Drawer
+        anchor="top"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      >
         <MovieReviews movie={movie} />
       </Drawer>
     </>
   );
 };
-export default  MovieDetails;
+export default MovieDetails;

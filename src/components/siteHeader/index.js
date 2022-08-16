@@ -49,7 +49,6 @@ const SiteHeader = () => {
     { name: "SIMILAR MOVIES", path: "movies/similar" },
     { name: "UPCOMING", path: "/movies/upcoming" },
     { name: "TV DETAILS", path: "/tv/tv_id" },
-   
   ];
   const menuOptions2 = [
     { name: "HOME", path: "/" },
@@ -58,7 +57,6 @@ const SiteHeader = () => {
     { name: "FAVOURITES", path: "/movies/favourites" },
     { name: "TOP RATED", path: "movies/top-rated" },
   ];
-
 
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL);
@@ -74,21 +72,23 @@ const SiteHeader = () => {
         className={classes.appbar}
         position="fixed"
         elevation={0}
-        style={{ flex: 1, backgroundColor: "#581845" ,color:"#DAF7A6" }}
+        style={{ flex: 1, backgroundColor: "#581845", color: "#DAF7A6" }}
       >
         <Toolbar>
-        <Typography
+          <Typography
             variant="h5"
             className={classes.title}
             align="left"
-            style={{ fontFamily: "Franklin Gothic",flex: 1, color: "#FFC300" }}
-           
+            style={{ fontFamily: "Franklin Gothic", flex: 1, color: "#FFC300" }}
           >
             ICT2__ASSIGNMENT2__
-
           </Typography>
           {menuOptions2.map((opt) => (
-            <MenuItem variant="h6" key={opt.name} onClick={() => handleMenuSelect(opt.path)}>
+            <MenuItem
+              variant="h6"
+              key={opt.name}
+              onClick={() => handleMenuSelect(opt.path)}
+            >
               {opt.name}
             </MenuItem>
           ))}
@@ -116,7 +116,6 @@ const SiteHeader = () => {
           >
             All you need to know about Movies!
           </Typography>
-  
 
           {isMobile ? (
             <>

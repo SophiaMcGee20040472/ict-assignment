@@ -15,7 +15,10 @@ const RemoveFromFantasyIcon = ({ movie }) => {
       aria-label="remove from fantasy"
       onClick={handleRemoveFromMyFantasy}
     >
-      <DeleteIcon style={{backgroundColor:'red', color: 'white'}} fontSize="large" />
+      <DeleteIcon
+        style={{ backgroundColor: "red", color: "white" }}
+        fontSize="large"
+      />
     </IconButton>
   );
 };

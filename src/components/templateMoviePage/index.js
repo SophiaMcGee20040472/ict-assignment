@@ -6,30 +6,27 @@ import ImageList from "@material-ui/core/ImageList";
 import ImageListItem from "@material-ui/core/ImageListItem";
 import { getMovieImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
-import Spinner from "../spinner"
+import Spinner from "../spinner";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#581845",
     paddingTop: theme.spacing(7),
-
   },
   imageListRoot: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-around",
-
   },
   imageList: {
     width: 450,
-    height: '100vh',
+    height: "100vh",
   },
-
 }));
 
 const TemplateMoviePage = ({ movie, children }) => {
   const classes = useStyles();
-  const { data , error, isLoading, isError } = useQuery(
+  const { data, error, isLoading, isError } = useQuery(
     ["images", { id: movie.id }],
     getMovieImages
   );
@@ -38,10 +35,9 @@ const TemplateMoviePage = ({ movie, children }) => {
     return <Spinner />;
   }
   if (isError) {
-    return <h1>{error.message}</h1>
+    return <h1>{error.message}</h1>;
   }
-  const images =data.posters
-
+  const images = data.posters;
 
   return (
     <div className={classes.root}>

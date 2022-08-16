@@ -86,7 +86,7 @@ export default function FilterMoviesCard(props) {
       >
         <CardContent>
           <Typography variant="h5" component="h1" style={{ color: "white" }}>
-          <SearchIcon fontSize="large" />
+            <SearchIcon fontSize="large" />
             Search Tv Page
           </Typography>
           <TextField
@@ -99,8 +99,8 @@ export default function FilterMoviesCard(props) {
             onChange={handleTextChange}
           />
           <Typography variant="h5" component="h1" style={{ color: "white" }}>
-          <SearchIcon fontSize="large" />
-          Search Actor Page.
+            <SearchIcon fontSize="large" />
+            Search Actor Page.
           </Typography>
           <TextField
             className={classes.formControl}
@@ -111,7 +111,7 @@ export default function FilterMoviesCard(props) {
             variant="filled"
             onChange={handleTitleChange}
           />
-            <Typography variant="h5" component="h1" style={{ color: "white" }}>
+          <Typography variant="h5" component="h1" style={{ color: "white" }}>
             <SearchIcon fontSize="large" />
             Search Movie Page.
           </Typography>

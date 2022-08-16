@@ -1,32 +1,33 @@
 import React from "react";
-import PageTemplate from '../components/templateMovieListPage'
+import PageTemplate from "../components/templateMovieListPage";
 import { getNowPlayingMovies } from "../api/tmdb-api";
-import Spinner from "../components/spinner"
+import Spinner from "../components/spinner";
 import { useQuery } from "react-query";
 import PlaylistAddIcons from "../components/cardIcons/playlistAddIcon";
 
 const NowPlayingPage = () => {
-  const { data, error, isLoading, isError }  = useQuery('now-playing', getNowPlayingMovies)
-  
+  const { data, error, isLoading, isError } = useQuery(
+    "now-playing",
+    getNowPlayingMovies
+  );
+
   if (isLoading) {
-    return <Spinner />
+    return <Spinner />;
   }
 
   if (isError) {
-    return <h1>{error.message}</h1>
-  }  
+    return <h1>{error.message}</h1>;
+  }
   const movies = data.results;
-
 
   return (
     <PageTemplate
-    title='NOW-PLAYING'
-    movies={movies}
-    action={(movie) => {
-      return <PlaylistAddIcons movie={movie}  />
-    }}
-  />
+      title="NOW-PLAYING"
+      movies={movies}
+      action={(movie) => {
+        return <PlaylistAddIcons movie={movie} />;
+      }}
+    />
   );
 };
 export default NowPlayingPage;
-

@@ -7,13 +7,13 @@ import Drawer from "@material-ui/core/Drawer";
 import { makeStyles } from "@material-ui/core/styles";
 import TVList from "../tvList";
 
-const useStyles = makeStyles((theme) =>  ({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#581845",
     paddingTop: theme.spacing(7),
     paddingLeft: theme.spacing(1),
-    marginRight:-1,
-    marginLeft:-1
+    marginRight: -1,
+    marginLeft: -1,
   },
   fab: {
     marginTop: theme.spacing(8),
@@ -28,8 +28,9 @@ function TVListPageTemplate({ tvseries, title, action }) {
   const [genreFilter, setGenreFilter] = useState("0");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const genreId = Number(genreFilter);
-  let displayedTVSeries = tvseries.filter((m) => {
-    return m.name.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
+  let displayedTVSeries = tvseries
+    .filter((m) => {
+      return m.name.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
     })
     .filter((m) => {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
@@ -40,15 +41,15 @@ function TVListPageTemplate({ tvseries, title, action }) {
   };
   return (
     <>
-    <Grid container className={classes.root}>
-      <Grid item xs={12}>
-        <Header title={title} />
+      <Grid container className={classes.root}>
+        <Grid item xs={12}>
+          <Header title={title} />
+        </Grid>
+        <Grid item container spacing={5}>
+          <TVList action={action} tvseries={displayedTVSeries} />
+        </Grid>
       </Grid>
-      <Grid item container spacing={5}>
-      <TVList action={action} tvseries={displayedTVSeries} />
-      </Grid>
-    </Grid>
-    <Fab
+      <Fab
         color="secondary"
         variant="extended"
         onClick={() => setDrawerOpen(true)}

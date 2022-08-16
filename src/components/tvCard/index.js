@@ -21,7 +21,10 @@ export default function TVCard({ tv, action }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card} style ={{background: "#DAF7A6 ", color: "#900C3F ",textAlign:"center"}}>
+    <Card
+      className={classes.card}
+      style={{ background: "#DAF7A6 ", color: "#900C3F ", textAlign: "center" }}
+    >
       <CardHeader className={classes.header} title={tv.name} />
       <CardMedia
         className={classes.media}
@@ -32,7 +35,7 @@ export default function TVCard({ tv, action }) {
         }
       />
       <CardContent>
-        <Grid container >
+        <Grid container>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
@@ -47,10 +50,14 @@ export default function TVCard({ tv, action }) {
           </Grid>
         </Grid>
       </CardContent>
-      <CardActions >
+      <CardActions>
         {action(tv)}
         <Link to={`/tvseries/${tv.id}`}>
-        <Button variant="outlined" size="medium" style ={{background:"#900C3F ", color:"#DAF7A6" }}>
+          <Button
+            variant="outlined"
+            size="medium"
+            style={{ background: "#900C3F ", color: "#DAF7A6" }}
+          >
             More Info ...
           </Button>
         </Link>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -31,20 +31,32 @@ export default function MovieReviews({ movie }) {
       <Table className={classes.table} aria-label="reviews table">
         <TableHead>
           <TableRow>
-            <TableCell >Author</TableCell>
-            <TableCell style={{backgroundColor:'#FFC300',color:'#DAF7A6 '}} align="center">Excerpt</TableCell>
-            <TableCell style={{backgroundColor:'#FF5733'}} align="right">More</TableCell>
+            <TableCell>Author</TableCell>
+            <TableCell
+              style={{ backgroundColor: "#FFC300", color: "#DAF7A6 " }}
+              align="center"
+            >
+              Excerpt
+            </TableCell>
+            <TableCell style={{ backgroundColor: "#FF5733" }} align="right">
+              More
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {reviews.map((r) => (
-            <TableRow key={r.id}style={{backgroundColor:'#F5F5F5'}}>
-              <TableCell component="th" scope="row" style={{backgroundColor:'#FF5733'}}>
+            <TableRow key={r.id} style={{ backgroundColor: "#F5F5F5" }}>
+              <TableCell
+                component="th"
+                scope="row"
+                style={{ backgroundColor: "#FF5733" }}
+              >
                 {r.author}
               </TableCell>
-              <TableCell >{excerpt(r.content)}</TableCell>
-              <TableCell >
-                <Link style={{color:'orange'}}
+              <TableCell>{excerpt(r.content)}</TableCell>
+              <TableCell>
+                <Link
+                  style={{ color: "orange" }}
                   to={`/reviews/${r.id}`}
                   state={{
                     review: r,

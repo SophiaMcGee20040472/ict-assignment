@@ -7,44 +7,42 @@ import Spinner from "../components/spinner";
 import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
 import WriteReview from "../components/cardIcons/writeReview";
 
-
-
 const FavouriteMoviesPage = () => {
   const { favourites: movieIds } = useContext(MoviesContext);
 
-const favouriteMovieQueries = useQueries(
-  movieIds.map((movieId) => {
-    return {
-      queryKey: ["movie", { id: movieId }],
-      queryFn: getMovie, 
-    };
-  })
-);
-const isLoading = favouriteMovieQueries.find((m) => m.isLoading === true);
+  const favouriteMovieQueries = useQueries(
+    movieIds.map((movieId) => {
+      return {
+        queryKey: ["movie", { id: movieId }],
+        queryFn: getMovie,
+      };
+    })
+  );
+  const isLoading = favouriteMovieQueries.find((m) => m.isLoading === true);
 
-if (isLoading) {
-  return <Spinner />;
-}
+  if (isLoading) {
+    return <Spinner />;
+  }
 
-const movies = favouriteMovieQueries.map((q) => {
-  q.data.genre_ids = q.data.genres.map((g) => g.id);
-  return q.data;
-});
+  const movies = favouriteMovieQueries.map((q) => {
+    q.data.genre_ids = q.data.genres.map((g) => g.id);
+    return q.data;
+  });
 
-return (
-  <PageTemplate
-    title="MY FAVOURITES"
-    movies={movies}
-    action={(movie) => {
-      return (
-        <>
-          <RemoveFromFavourites movie={movie} />
-          <WriteReview movie={movie} />
-        </>
-      );
-    }}
-  />
-);
+  return (
+    <PageTemplate
+      title="MY FAVOURITES"
+      movies={movies}
+      action={(movie) => {
+        return (
+          <>
+            <RemoveFromFavourites movie={movie} />
+            <WriteReview movie={movie} />
+          </>
+        );
+      }}
+    />
+  );
 };
 
 export default FavouriteMoviesPage;

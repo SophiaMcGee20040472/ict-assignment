@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#581845",
     paddingTop: theme.spacing(7),
     paddingLeft: theme.spacing(1),
-    marginRight:-1,
-    marginLeft:-1
+    marginRight: -1,
+    marginLeft: -1,
   },
   fab: {
     marginTop: theme.spacing(8),
@@ -30,7 +30,6 @@ function MovieListPageTemplate({ movies, title, action, selectMustWatch }) {
   const [languageFilter, setLanguageFilter] = useState("all");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [checkName, setCheckName] = useState(false);
-
 
   const genreId = Number(genreFilter);
 
@@ -50,15 +49,14 @@ function MovieListPageTemplate({ movies, title, action, selectMustWatch }) {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     });
 
-    if (checkName === true) {
-      displayedMovies.sort((a, b) => a.title > b.title ? 1 : -1);
-    } 
+  if (checkName === true) {
+    displayedMovies.sort((a, b) => (a.title > b.title ? 1 : -1));
+  }
 
   const handleChange = (type, value) => {
     if (type === "title") setTitleFilter(value);
     else if (type === "language") setLanguageFilter(value);
     else if (type === "sortTitle") setCheckName(value);
-
     else setGenreFilter(value);
   };
 

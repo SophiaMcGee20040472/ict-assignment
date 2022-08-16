@@ -12,7 +12,7 @@ import Header from "../headerMovieList";
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#581845",
-    color:"#DAF7A6",
+    color: "#DAF7A6",
     paddingTop: theme.spacing(7),
   },
   imageListRoot: {

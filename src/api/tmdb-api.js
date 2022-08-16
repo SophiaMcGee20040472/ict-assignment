@@ -208,15 +208,16 @@ export const getTVSeriesDetails = (args) => {
   const { id } = idPart;
   return fetch(
     `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
-  ).then((response) => {
-    if (!response.ok) {
-      throw new Error(response.json().message);
-    }
-    return response.json();
-  })
-  .catch((error) => {
-    throw error
- });
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
 };
 
 export const getTvImages = ({ queryKey }) => {
@@ -224,16 +225,16 @@ export const getTvImages = ({ queryKey }) => {
   const { id } = idPart;
   return fetch(
     `https://api.themoviedb.org/3/tv/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
-  ).then( (response) => {
-    if (!response.ok) {
-      throw new Error(response.json().message);
-    }
-    return response.json();
-
-  })
-  .catch((error) => {
-    throw error
- });
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
 };
 
 export const getMovieReviews = (id) => {
@@ -283,7 +284,7 @@ export const getActorsMovies = (args) => {
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(
-        ` https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US` 
+    ` https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
   )
     .then((res) => res.json())
     .then((json) => {
@@ -298,17 +299,16 @@ export const getActorBio = (args) => {
   return fetch(
     `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
   )
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(response.json().message);
-    }
-    return response.json();
-  })
-  .catch((error) => {
-    throw error
- });
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
 };
-
 
 export const getNowPlayingMovies = (id) => {
   return fetch(

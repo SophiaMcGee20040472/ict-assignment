@@ -5,14 +5,16 @@ import PageTemplate from "../components/templateMoviePage";
 //import useMovie from "../hooks/useMovie";
 import { getMovie } from "../api/tmdb-api";
 import { useQuery } from "react-query/";
-import Spinner from '../components/spinner'
+import Spinner from "../components/spinner";
 
 const MovieDetailsPage = () => {
   const { id } = useParams();
-  const { data: movie, error, isLoading, isError } = useQuery(
-    ["movie", { id: id }],
-    getMovie
-  );
+  const {
+    data: movie,
+    error,
+    isLoading,
+    isError,
+  } = useQuery(["movie", { id: id }], getMovie);
 
   if (isLoading) {
     return <Spinner />;
@@ -37,6 +39,3 @@ const MovieDetailsPage = () => {
 };
 
 export default MovieDetailsPage;
-
-
-

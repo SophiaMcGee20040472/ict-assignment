@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Header from '../headerMovieList';
-import FilterCard from '../filterMoviesCard';
-import Grid from '@material-ui/core/Grid';
-import Fab from '@material-ui/core/Fab';
-import Drawer from '@material-ui/core/Drawer';
-import { makeStyles } from '@material-ui/core/styles';
-import ActorList from '../actorList';
+import React, { useState } from "react";
+import Header from "../headerMovieList";
+import FilterCard from "../filterMoviesCard";
+import Grid from "@material-ui/core/Grid";
+import Fab from "@material-ui/core/Fab";
+import Drawer from "@material-ui/core/Drawer";
+import { makeStyles } from "@material-ui/core/styles";
+import ActorList from "../actorList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
 
 function ActorListPageTemplate({ actors, title, action }) {
   const classes = useStyles();
-  const [titleFilter, setTitleFilter] = useState('');
-  const [genreFilter, setGenreFilter] = useState('0');
+  const [titleFilter, setTitleFilter] = useState("");
+  const [genreFilter, setGenreFilter] = useState("0");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const genreId = Number(genreFilter);
@@ -37,7 +37,7 @@ function ActorListPageTemplate({ actors, title, action }) {
     });
 
   const handleChange = (type, value) => {
-    if (type === 'title') setTitleFilter(value);
+    if (type === "title") setTitleFilter(value);
     else setGenreFilter(value);
   };
 

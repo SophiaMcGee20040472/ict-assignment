@@ -2,9 +2,8 @@ import React, { useContext } from "react";
 import FavTvPageTemplate from "../components/templateFavTvPage";
 import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
-import { getTVSeriesDetails} from "../api/tmdb-api";
+import { getTVSeriesDetails } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
-
 
 const FavTvPage = () => {
   const { TvFavs } = useContext(MoviesContext);
@@ -25,14 +24,13 @@ const FavTvPage = () => {
   }
 
   const tvseries = TvFavsQueries.map((q) => {
-    q.data.title= q.data.name;
-    q.data.type= "tvSeries";
+    q.data.title = q.data.name;
+    q.data.type = "tvSeries";
     return q.data;
   });
 
-  console.log(tvseries)
+  console.log(tvseries);
   return (
-   
     <FavTvPageTemplate
       title="MY FAV TV"
       tvseries={tvseries}
@@ -41,7 +39,6 @@ const FavTvPage = () => {
           <>
             <addToTvFavs tvseries={tvSeries} />
           </>
-          
         );
       }}
     />

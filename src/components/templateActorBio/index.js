@@ -11,17 +11,15 @@ import Spinner from "../spinner";
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#581845",
-    color:"#DAF7A6",
+    color: "#DAF7A6",
     paddingTop: theme.spacing(7),
-    marginRight:-10,
-    marginLeft:-10
-    
+    marginRight: -10,
+    marginLeft: -10,
   },
   imageListRoot: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-around",
-    
   },
   imageList: {
     width: 450,
@@ -33,7 +31,8 @@ const TemplateActorBioPage = ({ actor, children }) => {
   const classes = useStyles();
   const { data, error, isLoading, isError } = useQuery(
     ["actor images", { id: actor.id }],
-    getActorsImage , getActorsMovies
+    getActorsImage,
+    getActorsMovies
   );
 
   if (isLoading) {

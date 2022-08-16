@@ -13,16 +13,18 @@ import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
-  card: { maxWidth: 300 ,marginBottom: 20},
+  card: { maxWidth: 300, marginBottom: 20 },
   media: { height: 250, marginBottom: 20 },
   backgroundColor: "#FF5733 ",
-  
 });
-export default function TVCard({ tv,tvSeries, action }) {
+export default function TVCard({ tv, tvSeries, action }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card} style ={{background: "#DAF7A6 ", color: "#900C3F ",textAlign:"center"}}>
+    <Card
+      className={classes.card}
+      style={{ background: "#DAF7A6 ", color: "#900C3F ", textAlign: "center" }}
+    >
       <CardHeader className={classes.header} title={tvSeries.name} />
       <CardMedia
         className={classes.media}
@@ -32,8 +34,8 @@ export default function TVCard({ tv,tvSeries, action }) {
             : `${process.env.PUBLIC_URL}/assets/film-poster-placeholder.png`
         }
       />
-            <CardContent>
-        <Grid container >
+      <CardContent>
+        <Grid container>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
@@ -49,6 +51,5 @@ export default function TVCard({ tv,tvSeries, action }) {
         </Grid>
       </CardContent>
     </Card>
-    
   );
 }

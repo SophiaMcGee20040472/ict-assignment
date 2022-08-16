@@ -8,43 +8,42 @@ import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
 import WriteReview from "../components/cardIcons/writeReview";
 import RemoveFromFantasyIcon from "../components/cardIcons/removeMyFantasy";
 
-
 const FantasyMoviesPage = () => {
   const { myFantasy: movieIds } = useContext(MoviesContext);
 
-const fantasyMovieQueries = useQueries(
-  movieIds.map((movieId) => {
-    return {
-      queryKey: ["movie", { id: movieId }],
-      queryFn: getMovie,
-    };
-  })
-);
-const isLoading = fantasyMovieQueries.find((m) => m.isLoading === true);
+  const fantasyMovieQueries = useQueries(
+    movieIds.map((movieId) => {
+      return {
+        queryKey: ["movie", { id: movieId }],
+        queryFn: getMovie,
+      };
+    })
+  );
+  const isLoading = fantasyMovieQueries.find((m) => m.isLoading === true);
 
-if (isLoading) {
-  return <Spinner />;
-}
+  if (isLoading) {
+    return <Spinner />;
+  }
 
-const movies = fantasyMovieQueries.map((q) => {
-  q.data.genre_ids = q.data.genres.map((g) => g.id);
-  return q.data;
-});
+  const movies = fantasyMovieQueries.map((q) => {
+    q.data.genre_ids = q.data.genres.map((g) => g.id);
+    return q.data;
+  });
 
-return (
-  <PageTemplate
-    title="MY FANTASY"
-    movies={movies}
-    action={(movie) => {
-      return (
-        <>
-          <RemoveFromFantasyIcon movie={movie} />
-          <WriteReview movie={movie} />
-        </>
-      );
-    }}
-  />
-);
+  return (
+    <PageTemplate
+      title="MY FANTASY"
+      movies={movies}
+      action={(movie) => {
+        return (
+          <>
+            <RemoveFromFantasyIcon movie={movie} />
+            <WriteReview movie={movie} />
+          </>
+        );
+      }}
+    />
+  );
 };
 
 export default FantasyMoviesPage;

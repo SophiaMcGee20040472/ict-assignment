@@ -1,13 +1,12 @@
 import React from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
-import ErrorOutlinedIcon from "@material-ui/icons/AccessAlarm" ;
+import ErrorOutlinedIcon from "@material-ui/icons/AccessAlarm";
 import Face from "@material-ui/icons/Face";
 import Cake from "@material-ui/icons/Cake";
 import Work from "@material-ui/icons/Work";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-
 
 const useStyles = makeStyles((theme) => ({
   chipRoot: {
@@ -32,39 +31,55 @@ const useStyles = makeStyles((theme) => ({
   chipLabel: {
     margin: theme.spacing(0.5),
   },
-  fab: {  //New
+  fab: {
+    //New
     position: "fixed",
     top: theme.spacing(15),
     right: theme.spacing(2),
   },
 }));
 
-const ActorDetails = ( {actor}) => {
-const classes = useStyles();
+const ActorDetails = ({ actor }) => {
+  const classes = useStyles();
 
   return (
     <>
       <Typography variant="h5" component="h3">
         Biography
       </Typography>
-      <Typography style ={{color:"#FFC300"}}>{actor.name}</Typography>
+      <Typography style={{ color: "#FFC300" }}>{actor.name}</Typography>
       <Typography variant="h6" component="p">
-       {actor.biography}
+        {actor.biography}
       </Typography>
       <div className={classes.chipRoot}>
-      <Chip
-          style={{background:"#900C3F", color:"#DAF7A6"}}
-          icon={<Cake style={{color:"#FFC300 "}} />}
-          label={`${actor.birthday}` } 
+        <Chip
+          style={{ background: "#900C3F", color: "#DAF7A6" }}
+          icon={<Cake style={{ color: "#FFC300 " }} />}
+          label={`${actor.birthday}`}
         />
-      <Paper component="ul" className={classes.chipSet} style={{background:"#581845"}} >
-        <Chip style={{background:"#900C3F", color:"#DAF7A6"}} icon={< Face style={{color:"#FFC300"}} />} label={`${actor.name}`} />
-        <Chip style={{background:"#900C3F", color:"#DAF7A6"}} icon={<Work style={{color:"#FFC300"}}  />} label={`${actor.known_for_department}`} />
-        <Chip style={{background:"#900C3F", color:"#DAF7A6"}} icon={<ErrorOutlinedIcon style={{color:"#FFC300"}}  />} label={`${actor.popularity}`} />
-      </Paper>
+        <Paper
+          component="ul"
+          className={classes.chipSet}
+          style={{ background: "#581845" }}
+        >
+          <Chip
+            style={{ background: "#900C3F", color: "#DAF7A6" }}
+            icon={<Face style={{ color: "#FFC300" }} />}
+            label={`${actor.name}`}
+          />
+          <Chip
+            style={{ background: "#900C3F", color: "#DAF7A6" }}
+            icon={<Work style={{ color: "#FFC300" }} />}
+            label={`${actor.known_for_department}`}
+          />
+          <Chip
+            style={{ background: "#900C3F", color: "#DAF7A6" }}
+            icon={<ErrorOutlinedIcon style={{ color: "#FFC300" }} />}
+            label={`${actor.popularity}`}
+          />
+        </Paper>
       </div>
-      
     </>
   );
 };
-export default  ActorDetails;
+export default ActorDetails;

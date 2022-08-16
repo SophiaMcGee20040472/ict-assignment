@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import TVSeriesList from "../tvSeriesList";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#581845",
@@ -18,27 +17,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function FavTvPageTemplate({ tvseries, title,action}) {
+function FavTvPageTemplate({ tvseries, title, action }) {
   const classes = useStyles();
 
-  let displayedSeries = tvseries
-  .filter((m) => {
-    return m
-  })
+  let displayedSeries = tvseries.filter((m) => {
+    return m;
+  });
 
-return (
-  <>
-   
-  <Grid container className={classes.root} style ={{paddingRight:-30,paddingLeft:-30}}>
-        <Grid item xs={12} >
-        <TvHeader title={title}/>
+  return (
+    <>
+      <Grid
+        container
+        className={classes.root}
+        style={{ paddingRight: -30, paddingLeft: -30 }}
+      >
+        <Grid item xs={12}>
+          <TvHeader title={title} />
         </Grid>
-        <Grid item container spacing={5}>
-        </Grid>
+        <Grid item container spacing={5}></Grid>
         <br></br>
         <TVSeriesList action={action} tv={displayedSeries} />
       </Grid>
-
     </>
   );
 }

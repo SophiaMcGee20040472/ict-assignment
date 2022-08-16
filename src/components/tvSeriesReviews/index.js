@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -27,13 +27,13 @@ export default function TvSeriesReviews({ tvSeries }) {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="reviews table">
         <TableHead>
           <TableRow>
-            <TableCell >Author</TableCell>
+            <TableCell>Author</TableCell>
             <TableCell align="center">Excerpt</TableCell>
             <TableCell align="right">More</TableCell>
           </TableRow>
@@ -44,8 +44,8 @@ export default function TvSeriesReviews({ tvSeries }) {
               <TableCell component="th" scope="row">
                 {r.author}
               </TableCell>
-              <TableCell >{excerpt(r.content)}</TableCell>
-              <TableCell >
+              <TableCell>{excerpt(r.content)}</TableCell>
+              <TableCell>
                 <Link
                   to={`/tv/reviews/${tvSeries.id}`}
                   state={{

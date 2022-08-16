@@ -7,7 +7,6 @@ import { getActorsImage } from "../api/tmdb-api";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 import Search from "@material-ui/icons/Search";
 
-
 const ActorSearchPage = (props) => {
   const { data, error, isLoading, isError } = useQuery(
     "actors",
