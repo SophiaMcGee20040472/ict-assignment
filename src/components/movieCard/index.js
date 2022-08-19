@@ -19,7 +19,7 @@ import { useState } from "react";
 
 const useStyles = makeStyles({
   card: { maxWidth: 300 },
-  media: { height: 280 },
+  media: { height: 160 },
   avatar: {},
   avatar1: {},
 });

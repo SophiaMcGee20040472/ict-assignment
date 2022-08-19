@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 250,
+    minWidth: 200,
     backgroundColor: "rgb(255, 255, 255)",
   },
 }));
@@ -85,21 +85,22 @@ export default function FilterMoviesCard(props) {
         style={{ background: "#581845" }}
       >
         <CardContent>
-          <Typography variant="h5" component="h1" style={{ color: "white" }}>
-            <SearchIcon fontSize="large" />
+          <Typography variant="h5" component="h1" style={{ color: "white" ,fontSize:12}}>
+            <SearchIcon fontSize="small" />
             Search Tv Page
           </Typography>
           <TextField
             className={classes.formControl}
             id="filled-search"
             label=" Tv Search field"
+            size="small"
             type="search"
             value={props.nameFilter}
             variant="filled"
             onChange={handleTextChange}
           />
-          <Typography variant="h5" component="h1" style={{ color: "white" }}>
-            <SearchIcon fontSize="large" />
+          <Typography variant="h5" component="h1" style={{ color: "white", fontSize:12}}>
+            <SearchIcon fontSize="small" />
             Search Actor Page.
           </Typography>
           <TextField
@@ -107,12 +108,13 @@ export default function FilterMoviesCard(props) {
             id="filled-search"
             label="Actor Search field"
             type="search"
+            size="small"
             value={props.TitleFilter}
             variant="filled"
             onChange={handleTitleChange}
           />
-          <Typography variant="h5" component="h1" style={{ color: "white" }}>
-            <SearchIcon fontSize="large" />
+          <Typography variant="h5" component="h1" style={{ color: "white" , fontSize:12}}>
+            <SearchIcon fontSize="small" />
             Search Movie Page.
           </Typography>
           <TextField
@@ -120,6 +122,7 @@ export default function FilterMoviesCard(props) {
             id="filled-search"
             label="Movie Search field"
             type="search"
+            size="small"
             value={props.TitleFilter}
             variant="filled"
             onChange={handleTitleChange}
@@ -165,16 +168,14 @@ export default function FilterMoviesCard(props) {
         </CardContent>
       </Card>
       <Card className={classes.root} variant="outlined">
-        <CardContent style={{ background: "#900C3F" }}>
-          <Typography variant="h5" component="h1">
-            <SearchIcon fontSize="large" />
-            SORT MOVIES
-            <h6>Sort Options</h6>
-            <FormGroup>
-              <FormControlLabel
+        <CardContent style={{ background: "#900C3F"  }}>
+        <FormControlLabel
                 control={<Checkbox onChange={handleSortNameChange} />}
                 label="Alphabetize movies?"
               />
+          <Typography variant="h5" component="h1">
+            <h6>Sort Options</h6>
+            <FormGroup>
             </FormGroup>
           </Typography>
         </CardContent>

@@ -11,8 +11,8 @@ import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
-  card: { maxWidth: 280 },
-  media: { height: 220 },
+  card: { maxWidth: 300 },
+  media: { height: 210 },
   backgroundColor: "#FF5733 ",
 });
 export default function ActorCard({ actor }) {

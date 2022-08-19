@@ -1,27 +1,29 @@
-import React, { useState, Component } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { Button, Select } from "@material-ui/core";
+import { Select } from "@material-ui/core";
 import Nav from "../nav/nav";
+import { AuthContext } from "../../contexts/authContext";
+
 
 const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+
   appbar: {},
   inactiveLink: {
     color: "white",
-    padding: theme.spacing(1),
+    padding: theme.spacing(8),
     fontSize: "0.8rem",
     fontFamily: "Franklin Gothic",
   },
@@ -34,11 +36,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SiteHeader = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyles();
   const navigate = useNavigate();
-  const [anchorEl, setAnchorEl] = useState(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { token, signout } = useContext(AuthContext);
 
   const open = Boolean(anchorEl);
   const menuOptions = [
@@ -49,6 +52,7 @@ const SiteHeader = () => {
     { name: "SIMILAR MOVIES", path: "movies/similar" },
     { name: "UPCOMING", path: "/movies/upcoming" },
     { name: "TV DETAILS", path: "/tv/tv_id" },
+   
   ];
   const menuOptions2 = [
     { name: "HOME", path: "/" },
@@ -58,6 +62,7 @@ const SiteHeader = () => {
     { name: "TOP RATED", path: "movies/top-rated" },
   ];
 
+
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL);
   };
@@ -66,29 +71,38 @@ const SiteHeader = () => {
     setAnchorEl(event.currentTarget);
   };
 
+
   return (
     <>
+       {token ? (
+        <p>
+          Welcome! <button onClick={() => signout()}>Sign out</button>
+        </p>
+      ) : (
+        <p>
+          You are not logged in{" "}
+          <button onClick={() => navigate("login")}>Login</button>
+        </p>
+      )}
       <AppBar
         className={classes.appbar}
         position="fixed"
         elevation={0}
-        style={{ flex: 1, backgroundColor: "#581845", color: "#DAF7A6" }}
+        style={{ flex: 1, backgroundColor: "#581845" ,color:"#DAF7A6" }}
       >
-        <Toolbar>
-          <Typography
+        <Toolbar style= {{paddingTop: 50, marginBottom: 10, padding: 20, paddingLeft:40}}>
+        <Typography
             variant="h5"
             className={classes.title}
             align="left"
-            style={{ fontFamily: "Franklin Gothic", flex: 1, color: "#FFC300" }}
+            style={{ fontFamily: "Franklin Gothic",flex: 1, color: "#FFC300" }}
+           
           >
             ICT2__ASSIGNMENT2__
+
           </Typography>
           {menuOptions2.map((opt) => (
-            <MenuItem
-              variant="h6"
-              key={opt.name}
-              onClick={() => handleMenuSelect(opt.path)}
-            >
+            <MenuItem variant="h6" key={opt.name} onClick={() => handleMenuSelect(opt.path)}>
               {opt.name}
             </MenuItem>
           ))}
@@ -116,7 +130,6 @@ const SiteHeader = () => {
           >
             All you need to know about Movies!
           </Typography>
-
           {isMobile ? (
             <>
               <IconButton

@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   card: { maxWidth: 300, marginBottom: 20 },
-  media: { height: 250, marginBottom: 20 },
+  media: { height: 166, marginBottom: 20 },
   backgroundColor: "#FF5733 ",
 });
 export default function TVCard({ tv, tvSeries, action }) {

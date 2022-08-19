@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: -1,
   },
   fab: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(13.5),
+    marginRight:theme.spacing(10),
     position: "fixed",
     top: theme.spacing(2),
     right: theme.spacing(2),

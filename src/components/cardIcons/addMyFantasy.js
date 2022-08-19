@@ -11,10 +11,10 @@ const AddFantasyIcon = ({ movie }) => {
     context.addToMyFantasy(movie);
   };
   return (
-    <IconButton aria-label="add to fantasy" onClick={handleAddToMyFantasy}>
+    <IconButton aria-label="add to fantasy" onClick={handleAddToMyFantasy} >
       <MovieIcon
         style={{ color: "#FFC300", background: "#581845" }}
-        fontSize="large"
+        fontSize="large"   
       />
     </IconButton>
   );
