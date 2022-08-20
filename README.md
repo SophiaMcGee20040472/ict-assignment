@@ -70,24 +70,24 @@ Please see screenshots in public/MoviePics
 In Order
 e.g.
 
-> Lists Actors info from the people endpoint.
-> Lists Actors profile picture and Name.
-> Basic Authentication to access protected routes
-> List Discover Movies from discovery endpoint.
-> Listing favourited tv show added by you.
-> Side menu with search filter and sorting options.
-> review preview of tv series when review button is pressed.
-> Lists full movie Review
-> review preview of movies when review button is pressed
-> listing added movies to Fantasy list
-> Listing Favourited movies
-> Listing currently playing movies from endpoint
-> List popular movies gotten from the popular movies endpoint.
-> Listing similar movies gotten from api endpoint.
-> Listing Top rated movies gotten from api endpoint.
-> Listing Tv Details
-> Listing upcoming movies gotten from api endpoint.
-> Listing movies added to watchlist.
+- > Lists Actors info from the people endpoint.
+- > Lists Actors profile picture and Name.
+- > Basic Authentication to access protected routes
+- > List Discover Movies from discovery endpoint.
+- > Listing favourited tv show added by you.
+- > Side menu with search filter and sorting options.
+- > review preview of tv series when review button is pressed.
+- > Lists full movie Review
+- > review preview of movies when review button is pressed
+- > listing added movies to Fantasy list
+- > Listing Favourited movies
+- > Listing currently playing movies from endpoint
+- > List popular movies gotten from the popular movies endpoint.
+- > Listing similar movies gotten from api endpoint.
+- > Listing Top rated movies gotten from api endpoint.
+- > Listing Tv Details
+- > Listing upcoming movies gotten from api endpoint.
+- > Listing movies added to watchlist.
 
 ### Component catalogue.
 
@@ -133,6 +133,7 @@ e.g.
 Basic Authentication and protected routes. I chose two routes to protect my Favourite and my watchlist
 Please see image AuthPage.png from public/MoviePics to see auth page. Please see snippet of code below where the routes were protected.
 e.g.
+-
 <Route
 path="/movies/watchlist" // path that is protected
 element={
