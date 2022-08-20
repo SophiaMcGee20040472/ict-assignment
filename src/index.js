@@ -27,7 +27,7 @@ import TvReviewsPage from "./pages/tvReviewsPage";
 import ProtectedRoute from "./contexts/protectedRoute";
 import AuthContextProvider from "./contexts/authContext";
 import LoginPage from "./pages/loginPage";
-import axios from "axios";
+
 
 
 const queryClient = new QueryClient({

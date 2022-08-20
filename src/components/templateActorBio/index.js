@@ -32,7 +32,6 @@ const TemplateActorBioPage = ({ actor, children }) => {
   const { data, error, isLoading, isError } = useQuery(
     ["actor images", { id: actor.id }],
     getActorsImage,
-    getActorsMovies
   );
 
   if (isLoading) {

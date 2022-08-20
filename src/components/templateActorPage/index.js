@@ -14,9 +14,10 @@ const useStyles = makeStyles((theme) => ({
   },
   fab: {
     marginTop: theme.spacing(13.5),
+    marginRight:theme.spacing(10),
     position: "fixed",
     top: theme.spacing(2),
-    right: theme.spacing(3),
+    right: theme.spacing(2),
   },
 }));
 
@@ -52,7 +53,7 @@ function ActorListPageTemplate({ actors, title, action }) {
         </Grid>
       </Grid>
       <Fab
-        color="secondary"
+        style ={{color :"#581845" ,background:"#FFC300"}}
         variant="extended"
         onClick={() => setDrawerOpen(true)}
         className={classes.fab}

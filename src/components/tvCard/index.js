@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -11,14 +11,38 @@ import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import StarRateIcon from "@material-ui/icons/StarRate";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
+import AddToFavTvIcon from "../cardIcons/addTvFavourite";
+import { MoviesContext } from "../../contexts/moviesContext";
+import Avatar from "@material-ui/core/Avatar";
+import { Icon } from "@material-ui/core";
 
 const useStyles = makeStyles({
   card: { maxWidth: 350 },
   media: { height: 166 },
   backgroundColor: "#FF5733 ",
+  Avatar: {},
 });
 export default function TVCard({ tv, action }) {
   const classes = useStyles();
+  const { TvFavs } = useContext(MoviesContext);
+
+  if (TvFavs.find((id) => id === tv.id)) {
+    tv.TvFavs = true;
+  } else {
+    tv.TvFavs = false;
+  }
+
+  let icon;
+
+  if (tv.TvFavs) {
+    icon = (
+      <Avatar className={classes.avatar}>
+        <AddToFavTvIcon />
+      </Avatar>
+    );
+  } else {
+    icon = null;
+  }
 
   return (
     <Card
@@ -28,6 +52,7 @@ export default function TVCard({ tv, action }) {
       <CardHeader className={classes.header} title={tv.name} />
       <CardMedia
         className={classes.media}
+        Avatar={icon}
         image={
           tv.poster_path
             ? `https://image.tmdb.org/t/p/w500/${tv.poster_path}`

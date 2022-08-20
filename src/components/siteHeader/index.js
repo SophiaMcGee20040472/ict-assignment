@@ -95,18 +95,18 @@ const SiteHeader = () => {
             variant="h5"
             className={classes.title}
             align="left"
-            style={{ fontFamily: "Franklin Gothic",flex: 1, color: "#FFC300" }}
+            style={{fontFamily: "Franklin Gothic",flex: 1, color: "#FFC300" }}
            
           >
             ICT2__ASSIGNMENT2__
 
           </Typography>
           {menuOptions2.map((opt) => (
-            <MenuItem variant="h6" key={opt.name} onClick={() => handleMenuSelect(opt.path)}>
+            <MenuItem style={{ backgroundColor: "#581845",fontSize:15 }} variant="h6" key={opt.name} onClick={() => handleMenuSelect(opt.path)}>
               {opt.name}
             </MenuItem>
           ))}
-          <Typography> MORE..</Typography>
+          <Typography style ={{fontSize:15}}> MORE..</Typography>
           <img
             src="https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg"
             width="10"

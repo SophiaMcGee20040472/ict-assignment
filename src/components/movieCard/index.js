@@ -15,18 +15,19 @@ import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import { MoviesContext } from "../../contexts/moviesContext";
 import PlaylistAddIcons from "../cardIcons/playlistAddIcon";
-import { useState } from "react";
+import AddToFavouritesIcon from "../cardIcons/addToFavourites";
+import AddFantasyIcon from "../cardIcons/addMyFantasy";
+
 
 const useStyles = makeStyles({
   card: { maxWidth: 300 },
   media: { height: 160 },
-  avatar: {},
-  avatar1: {},
+  avatar: {}
 });
 
 export default function MovieCard({ movie, action }) {
   const classes = useStyles();
-  const { favourites, addToFavourites, mustWatch } = useContext(MoviesContext);
+  const { favourites, addToFavourites, mustWatch ,myFantasy} = useContext(MoviesContext);
 
   if (favourites.find((id) => id === movie.id)) {
     movie.favourite = true;
@@ -34,60 +35,65 @@ export default function MovieCard({ movie, action }) {
     movie.favourite = false;
   }
 
+  if (mustWatch.find((id) => id === movie.id)) {
+    movie.mustWatch = true;
+  } else {
+    movie.mustWatch = false
+  }
+
+  if (myFantasy.find((id) => id === movie.id)) {
+    movie.myFantasy = true;
+  } else {
+    movie.myFantasy= false
+  }
+
   const handleAddToFavourite = (e) => {
     e.preventDefault();
     addToFavourites(movie);
   };
-
-  if (mustWatch.find((id) => id === movie.id)) {
-    movie.mustWatch = true;
-  } else {
-    movie.mustWatch = false;
-  }
 
   const handleAddToMustWatchList = (e) => {
     e.preventDefault();
     PlaylistAddIcons(movie.id);
   };
 
+  let icon;
+
+  if(movie.favourite) {
+    icon =(<Avatar className={classes.avatar}>
+       <AddToFavouritesIcon />
+     </Avatar>)
+   } else if (movie.mustWatch) {
+     icon =(<Avatar className={classes.avatar}>
+       <PlaylistAddIcons />
+     </Avatar>)
+   } else if (movie.myFantasy) {
+      icon =(<Avatar className={classes.avatar}>
+        <AddFantasyIcon/>
+      </Avatar>)
+   } else {
+     icon = null
+   }
+
   return (
+    <div>
     <Card
       className={classes.card}
       style={{ flex: 1, backgroundColor: "#DAF7A6" }}
     >
-      <CardHeader
-        className={classes.header}
-        avatar={
-          movie.favourite ? (
-            <Avatar
-              className={classes.avatar}
-              style={{ color: "#900C3F", backgroundColor: "#FF5733" }}
-            >
-              <FavoriteIcon />
-            </Avatar>
-          ) : null
-        }
-        avatar1={
-          movie.mustWatch ? (
-            <Avatar
-              className={classes.avatar1}
-              style={{ color: "#900C3F", backgroundColor: "white" }}
-            >
-              <PlaylistAddIcons />
-            </Avatar>
-          ) : null
-        }
-        title={
-          <Typography
+           <Typography
             variant="h5"
             component="p"
+            avatar = {icon}
             style={{ color: "#900C3F", textAlign: "center" }}
           >
             {movie.title}{" "}
           </Typography>
-        }
-      />
-
+      <CardHeader
+      avatar={icon}
+         className={classes.header}
+       />
+     
       <CardMedia
         className={classes.media}
         image={
@@ -137,5 +143,6 @@ export default function MovieCard({ movie, action }) {
         </Link>
       </CardActions>
     </Card>
+    </div>
   );
 }

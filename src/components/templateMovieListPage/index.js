@@ -6,6 +6,7 @@ import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
 import { makeStyles } from "@material-ui/core/styles";
 import MovieList from "../movieList";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,12 +73,12 @@ function MovieListPageTemplate({ movies, title, action, selectMustWatch }) {
         </Grid>
       </Grid>
       <Fab
-        color="secondary"
+        style ={{color :"#581845" ,background:"#FFC300"}}
         variant="extended"
         onClick={() => setDrawerOpen(true)}
         className={classes.fab}
       >
-        Filter
+        Filter 
       </Fab>
       <Drawer
         anchor="left"

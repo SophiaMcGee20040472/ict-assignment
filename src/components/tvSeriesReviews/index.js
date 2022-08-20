@@ -40,11 +40,11 @@ export default function TvSeriesReviews({ tvSeries }) {
         </TableHead>
         <TableBody>
           {reviews.map((r) => (
-            <TableRow key={r.id}>
-              <TableCell component="th" scope="row">
+            <TableRow key={r.id} style={{ backgroundColor: "#581845" }}>
+              <TableCell component="th" scope="row" style={{ color: "#FFC300" }}>
                 {r.author}
               </TableCell>
-              <TableCell>{excerpt(r.content)}</TableCell>
+              <TableCell style={{ color: "#FFC300" }}>{excerpt(r.content)}</TableCell>
               <TableCell>
                 <Link
                   to={`/tv/reviews/${tvSeries.id}`}
@@ -52,6 +52,7 @@ export default function TvSeriesReviews({ tvSeries }) {
                     review: r,
                     tvSeries: tvSeries,
                   }}
+                 
                 >
                   Full Review
                 </Link>
