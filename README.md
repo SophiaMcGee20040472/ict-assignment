@@ -5,7 +5,7 @@ Student No. 20040472
 
 ## Overview.
 
-I have added many features. I decided on a colour theme firstly that I have used exstensively incorporating a large amount of material ui elements along with styling using css. I have added an actors page with actor bio link. I have added tv series with tv summary and tv review options. I have created a watchlist add button along with the option to add films to my fantasy page. I have used many api calls and have created many pages including top rated movies,similar movies, popular movies, now-playing movies. I have also created the option to sort through different pages with the filter button. This button allows you to be presented with a search bar and depending on which page you are on be it tv series movies or actors you can only search in that specific field. I also created an option to sort using languages and the ability to sort movies alphabetically but only movies. I have used basic authentication and have protected my favourites movies and my watchlist meaning you have to press a button to gain access. I have used an extensive amount of components for my story book support. I selected the elements I thought most important to return. I have used extensive hyperlinking with a mix of static and parameterised urls. I have used full caching on all my api end points.
+I have added many features. I decided on a colour theme firstly that I have used exstensively incorporating a large amount of material ui elements along with styling using css. I have added an actors page with actor bio link which then leads you to bio page. I have added tv series with tv summary and tv review options along with actors accredited to the tv series selected. I have created a watchlist add button along with the option to add films to my fantasy page. I have used many api calls and have created many pages including top rated movies,similar movies, popular movies, now-playing movies plus many more.  I have also created the option to sort through different pages with the filter button. This button allows you to be presented with a search bar and depending on which page you are on be it tv series movies or actors you can only search in that specific field. I also created an option to sort using languages and the ability to sort movies alphabetically but only movies. I have used basic authentication and have protected my favourites movies and my watchlist meaning you have to press a button to gain access. I have used an extensive amount of components for my story book support. I selected the elements I thought most important to return. I have used extensive hyperlinking. I have used full caching on all my api end points. Overall this app has quite a few elements to it Im sure there are a few I have forgotten to mention. I have thoroughly enjoyed creating this app unfortunately I have ran out of time to add any more features.
 
 e.g.
 
@@ -55,10 +55,10 @@ e.g.
 - /login login to authenticate protected routes page
 - /movies/now-playing Movies currently playing
 - /actors" Listing of Actors Page
-- /actor/:id Actors Biography Page listing there info
-- /movies/:id Discover Movie Page
+- /actor/:id Actors Biography Page listing there info 
+- /movies/:id Movies Detail page wirh actors accredited to movie
 - /tv/reviews/:id Tv Reviews Page
-- /tvseries/:id Tv Series Details Page
+- /tvseries/:id Tv Series Details Page and actors accredited to movie
 - /movies/similar Similar Movie Page
 - /movies/fantasy Fantasy Movies Page this page is where they can be viewed
 - /tvseries/favTv Favourited Tv Series Page
@@ -78,6 +78,7 @@ e.g.
 - > Side menu with search filter and sorting options.
 - > review preview of tv series when review button is pressed.
 - > Lists full movie Review
+- > Lists Cast for movie
 - > review preview of movies when review button is pressed
 - > listing added movies to Fantasy list
 - > Listing Favourited movies
@@ -85,6 +86,7 @@ e.g.
 - > List popular movies gotten from the popular movies endpoint.
 - > Listing similar movies gotten from api endpoint.
 - > Listing Top rated movies gotten from api endpoint.
+- > Lists Cast for Tv Series
 - > Listing Tv Details
 - > Listing upcoming movies gotten from api endpoint.
 - > Listing movies added to watchlist.

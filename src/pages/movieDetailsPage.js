@@ -2,10 +2,10 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
-//import useMovie from "../hooks/useMovie";
-import { getMovie } from "../api/tmdb-api";
+import { getMovie, getMoviesCredits } from "../api/tmdb-api";
 import { useQuery } from "react-query/";
 import Spinner from "../components/spinner";
+import MovieCast from "../components/movieCast";
 
 const MovieDetailsPage = () => {
   const { id } = useParams();
@@ -15,6 +15,11 @@ const MovieDetailsPage = () => {
     isLoading,
     isError,
   } = useQuery(["movie", { id: id }], getMovie);
+
+  const { data: cast } = useQuery(
+    ["movie cast", { id: id }],
+    getMoviesCredits
+  );
 
   if (isLoading) {
     return <Spinner />;
@@ -29,6 +34,7 @@ const MovieDetailsPage = () => {
         <>
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
+            <MovieCast cast={cast}/>
           </PageTemplate>
         </>
       ) : (

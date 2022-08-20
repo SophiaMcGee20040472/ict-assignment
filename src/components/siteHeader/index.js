@@ -52,7 +52,7 @@ const SiteHeader = () => {
     { name: "SIMILAR MOVIES", path: "movies/similar" },
     { name: "UPCOMING", path: "/movies/upcoming" },
     { name: "TV DETAILS", path: "/tv/tv_id" },
-   
+    
   ];
   const menuOptions2 = [
     { name: "HOME", path: "/" },
